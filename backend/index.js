@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const usersRoutes = require('./routes/user')
 const tourRoutes = require('./routes/tour')
+const bookingRoutes = require('./routes/booking')
 
 require('dotenv').config()
 const app = express()
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/api/v1/users', usersRoutes)
 app.use('/api/v1/tours', tourRoutes)
+app.use('/api/v1/bookings', bookingRoutes)
 
 app.listen(port, () => {
   connect()
