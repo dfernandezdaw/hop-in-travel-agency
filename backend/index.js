@@ -3,6 +3,7 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const usersRoutes = require('./routes/user')
+const tourRoutes = require('./routes/tour')
 
 require('dotenv').config()
 const app = express()
@@ -26,8 +27,15 @@ const connect = async () => {
   }
 }
 
+// Message with the method, path and actualtime
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} ${new Date().toLocaleTimeString()}`)
+  next()
+})
+
 // Routes
 app.use('/api/v1/users', usersRoutes)
+app.use('/api/v1/tours', tourRoutes)
 
 app.listen(port, () => {
   connect()
