@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const usersRoutes = require('./routes/user')
 const tourRoutes = require('./routes/tour')
 const bookingRoutes = require('./routes/booking')
+const reviewsRoutes = require('./routes/reviews')
 
 require('dotenv').config()
 const app = express()
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
 app.use('/api/v1/users', usersRoutes)
 app.use('/api/v1/tours', tourRoutes)
 app.use('/api/v1/bookings', bookingRoutes)
+app.use('/api/v1/reviews', reviewsRoutes)
 
 app.listen(port, () => {
   connect()
