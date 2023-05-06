@@ -6,6 +6,7 @@ const usersRoutes = require('./routes/user')
 const tourRoutes = require('./routes/tour')
 const bookingRoutes = require('./routes/booking')
 const reviewsRoutes = require('./routes/reviews')
+const authRoutes = require('./routes/auth')
 
 require('dotenv').config()
 const app = express()
@@ -40,6 +41,7 @@ app.use('/api/v1/users', usersRoutes)
 app.use('/api/v1/tours', tourRoutes)
 app.use('/api/v1/bookings', bookingRoutes)
 app.use('/api/v1/reviews', reviewsRoutes)
+app.use('/api/v1/auth', authRoutes)
 
 app.listen(port, () => {
   connect()
