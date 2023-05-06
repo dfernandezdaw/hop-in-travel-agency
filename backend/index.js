@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
+const usersRoutes = require('./routes/user')
 
 require('dotenv').config()
 const app = express()
@@ -24,6 +25,9 @@ const connect = async () => {
     console.log(`MongoDB connection error: ${error}`)
   }
 }
+
+// Routes
+app.use('/api/v1/users', usersRoutes)
 
 app.listen(port, () => {
   connect()
