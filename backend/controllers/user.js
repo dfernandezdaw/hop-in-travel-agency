@@ -35,16 +35,16 @@ const createUser = async (req, res) => {
 // Update user
 const updateUser = async (req, res) => {
   const { id } = req.params
-  const { username, email, password } = req.body
+  const { username, email, password, profilePicture } = req.body
   try {
     const user = await User.findByIdAndUpdate(
       id,
-      { username, email, password },
+      { username, email, password, profilePicture },
       { new: true }
     )
     res.json({ message: 'User updated successfully', data: user })
   } catch (error) {
-    res.status(400).json({ message: error })
+    res.status(400).json({ message: 'Failed to update user', error: error })
   }
 }
 
