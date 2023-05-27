@@ -7,12 +7,16 @@ const {
   deleteTour,
   searchTours,
   searchToursByCityDurationAndGroupSize,
+  searchFeaturedTours,
 } = require('../controllers/tour')
 
 const router = express.Router()
 
 // Route to search tour by city name, duration and group size get
 router.get('/search-main', searchToursByCityDurationAndGroupSize)
+
+// Route to search featured tours
+router.get('/featured', searchFeaturedTours)
 
 // Route to get all tours
 router.get('/', getTours)

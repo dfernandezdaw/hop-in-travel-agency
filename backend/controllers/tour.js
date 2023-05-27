@@ -97,6 +97,15 @@ const searchToursByCityDurationAndGroupSize = async (req, res) => {
   }
 }
 
+const searchFeaturedTours = async (req, res) => {
+  try {
+    const tours = await Tour.find({ featured: true })
+    res.json({ message: 'Tours found', data: tours })
+  } catch (error) {
+    res.status(404).json({ message: 'Tours not found' })
+  }
+}
+
 module.exports = {
   getTours,
   getTour,
@@ -105,4 +114,5 @@ module.exports = {
   deleteTour,
   searchTours,
   searchToursByCityDurationAndGroupSize,
+  searchFeaturedTours,
 }
