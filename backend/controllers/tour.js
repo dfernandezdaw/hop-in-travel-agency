@@ -63,10 +63,29 @@ const deleteTour = async (req, res) => {
   }
 }
 
+//Search tours by country name or city name (case insensitive)
+const searchTours = async (req, res) => {
+  const { location } = req.body
+  const query = {
+    // $regex is used to perform a regular expression search (i for case insensitive) $or is used to perform a logical OR operation
+    $or: [
+      { country: { $regex: location, $options: 'i' } },
+      { city: { $regex: location, $options: 'i' } },
+    ],
+  }
+  try {
+    const tours = await Tour.find(query)
+    res.json({ message: 'Tours found', data: tours })
+  } catch (error) {
+    res.status(404).json({ message: 'Tours not found' })
+  }
+}
+
 module.exports = {
   getTours,
   getTour,
   createTour,
   updateTour,
   deleteTour,
+  searchTours,
 }

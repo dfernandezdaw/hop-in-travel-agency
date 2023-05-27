@@ -5,6 +5,7 @@ const {
   createTour,
   updateTour,
   deleteTour,
+  searchTours,
 } = require('../controllers/tour')
 
 const router = express.Router()
@@ -23,5 +24,8 @@ router.put('/:id', updateTour)
 
 // Route to delete tour
 router.delete('/:id', deleteTour)
+
+// Route to search tour by country name post
+router.post('/search', searchTours)
 
 module.exports = router
