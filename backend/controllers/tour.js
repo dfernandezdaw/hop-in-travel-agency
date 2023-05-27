@@ -81,6 +81,22 @@ const searchTours = async (req, res) => {
   }
 }
 
+const searchToursByCityDurationAndGroupSize = async (req, res) => {
+  const city = new RegExp(req.query.city, 'i')
+  const duration = parseInt(req.query.duration)
+  const groupSize = parseInt(req.query.groupSize)
+  try {
+    const tours = await Tour.find({
+      city: city,
+      duration: { $gte: duration },
+      maxGroupSize: { $gte: groupSize },
+    })
+    res.json({ message: 'Tours found', data: tours })
+  } catch (error) {
+    res.status(404).json({ message: 'Tours not found' })
+  }
+}
+
 module.exports = {
   getTours,
   getTour,
@@ -88,4 +104,5 @@ module.exports = {
   updateTour,
   deleteTour,
   searchTours,
+  searchToursByCityDurationAndGroupSize,
 }
