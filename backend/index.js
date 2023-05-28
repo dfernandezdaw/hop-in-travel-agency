@@ -43,6 +43,11 @@ app.use('/api/v1/bookings', bookingRoutes)
 app.use('/api/v1/reviews', reviewsRoutes)
 app.use('/api/v1/auth', authRoutes)
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  res.status(500).json({ message: err.message || 'Internal Server Error' })
+})
+
 app.listen(port, () => {
   connect()
   console.log(`Server is running on port: ${port}`)
