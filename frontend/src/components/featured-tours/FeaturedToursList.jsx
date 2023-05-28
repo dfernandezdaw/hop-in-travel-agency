@@ -21,7 +21,7 @@ const FeaturedToursList = () => {
     return shuffledArray
   }
 
-  // Shuffle the featured tours and display only 6
+  // Shuffle the featured tours and display only 8
   const shuffledTours = shuffle(featuredTours || [])
   const featuredToursToDisplay = shuffledTours.slice(0, 8)
 

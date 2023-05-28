@@ -5,6 +5,7 @@ import hero1 from '../assets/hero1.jpg'
 import hero2 from '../assets/hero2.jpeg'
 import hero3 from '../assets/hero3.jpeg'
 import hero_video from '../assets/hero-video.mp4'
+import experienceImg from '../assets/experience.png'
 import SectionTitle from '../shared/SectionTitle'
 
 import SearchBar from '../shared/SearchBar'
@@ -61,23 +62,6 @@ const Home = () => {
           </Row>
         </Container>
       </section>
-      {/*       <section>
-        <Container className='my_container'>
-          <Row className='my_row'>
-            <Col className='my-col-lg-3'>
-              <h5 className='subtitle-service'>What we serve</h5>
-              <h2 className='title-service'>Our Services</h2>
-              <p className='text-service'>
-                We offer a wide range of travel services, including flight
-                tickets, hotel reservations, car rentals, and more. Our team of
-                experts is dedicated to providing you with the best travel
-                experience possible. Whether you're looking for a quick getaway
-                or an extended vacation, we have something for everyone!
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </section> */}
       <section>
         <Container className='my_container'>
           <Row className='my_row'>
@@ -86,6 +70,50 @@ const Home = () => {
               <h2 className='featured-tour-title'>Our featured tours</h2>
             </Col>
             <FeaturedToursList />
+          </Row>
+        </Container>
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg={6} className=''>
+              <div className='experience-content'>
+                <SectionTitle sectionTitle='Experience' />
+                <h2>
+                  Unforgettable Journeys. <br /> Expertise Matters.
+                </h2>
+                <p>
+                  With years of expertise, our travel agency creates
+                  unforgettable journeys for our clients. We have a loyal client
+                  base who trust us to deliver successful trips. Our curated
+                  itineraries showcase the best of each destination, with
+                  handpicked accommodations and seamless logistics. We value
+                  client feedback, continuously improving our services. Join our
+                  travel community for unforgettable experiences that exceed
+                  expectations. Trust us to bring your travel dreams to life.
+                </p>
+              </div>
+
+              <div className='counter-wrapper'>
+                <div className='counter-box'>
+                  <span>12k+</span>
+                  <h6>Succesful Trips</h6>
+                </div>
+                <div className='counter-box'>
+                  <span>2k+</span>
+                  <h6>Regular clients</h6>
+                </div>
+                <div className='counter-box'>
+                  <span>10</span>
+                  <h6>Years Experience</h6>
+                </div>
+              </div>
+            </Col>
+            <Col lg={6} className=''>
+              <div className='experience-img'>
+                <img src={experienceImg} alt='Experience Image' />
+              </div>
+            </Col>
           </Row>
         </Container>
       </section>
