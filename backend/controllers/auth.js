@@ -129,6 +129,8 @@ const verifyEmail = async (req, res) => {
       } else {
         // Update user and set verified to true
         await User.updateOne({ _id: user._id }, { verified: true })
+        // Delete the token
+        await Token.findOneAndRemove({ token: req.params.token })
         res.json({ message: 'Email verified' })
       }
     }
