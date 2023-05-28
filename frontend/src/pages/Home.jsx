@@ -8,6 +8,7 @@ import hero_video from '../assets/hero-video.mp4'
 import SectionTitle from '../shared/SectionTitle'
 
 import SearchBar from '../shared/SearchBar'
+import FeaturedToursList from '../components/featured-tours/FeaturedToursList'
 
 const Home = () => {
   return (
@@ -60,7 +61,7 @@ const Home = () => {
           </Row>
         </Container>
       </section>
-      <section>
+      {/*       <section>
         <Container className='my_container'>
           <Row className='my_row'>
             <Col className='my-col-lg-3'>
@@ -74,6 +75,17 @@ const Home = () => {
                 or an extended vacation, we have something for everyone!
               </p>
             </Col>
+          </Row>
+        </Container>
+      </section> */}
+      <section>
+        <Container className='my_container'>
+          <Row className='my_row'>
+            <Col lg={12} className='my-col-lg-12 mb-5'>
+              <SectionTitle sectionTitle='Explore' />
+              <h2 className='featured-tour-title'>Our featured tours</h2>
+            </Col>
+            <FeaturedToursList />
           </Row>
         </Container>
       </section>

@@ -1,7 +1,9 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const TourData = () => {
-  return <div>TourData</div>
+  const id = useParams().id
+  return <div>TourData {id}</div>
 }
 
 export default TourData

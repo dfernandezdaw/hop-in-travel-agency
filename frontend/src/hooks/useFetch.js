@@ -34,3 +34,5 @@ const useFetch = url => {
     loading,
   }
 }
+
+export default useFetch
