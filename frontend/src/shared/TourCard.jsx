@@ -40,7 +40,7 @@ const TourCard = ({ tour }) => {
       <Card>
         <div className='tour-img'>
           <img src={images[0]} alt='Image of the tour' />
-          <span>Featured</span>
+          {featured && <span>Featured</span>}
         </div>
 
         <CardBody>
