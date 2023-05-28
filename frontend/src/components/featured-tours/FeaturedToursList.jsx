@@ -7,6 +7,24 @@ import { RaceBy } from '@uiball/loaders'
 const FeaturedToursList = () => {
   const url = `${import.meta.env.VITE_LOCAL_URL}/tours/featured`
   const { data: featuredTours, loading, error } = useFetch(url)
+
+  // Function to shuffle the featured tours array
+  const shuffle = array => {
+    const shuffledArray = [...array]
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ]
+    }
+    return shuffledArray
+  }
+
+  // Shuffle the featured tours and display only 6
+  const shuffledTours = shuffle(featuredTours || [])
+  const featuredToursToDisplay = shuffledTours.slice(0, 8)
+
   return (
     <>
       {loading && (
@@ -19,7 +37,7 @@ const FeaturedToursList = () => {
       {error && <h4>{error}</h4>}
       {!loading &&
         !error &&
-        featuredTours?.map(tour => (
+        featuredToursToDisplay?.map(tour => (
           <Col lg='3' className='mb-4 my-col-lg-3' key={tour._id}>
             <TourCard tour={tour} />
           </Col>
