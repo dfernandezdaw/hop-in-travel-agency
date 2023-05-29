@@ -10,6 +10,7 @@ import SectionTitle from '../shared/SectionTitle'
 
 import SearchBar from '../shared/SearchBar'
 import FeaturedToursList from '../components/featured-tours/FeaturedToursList'
+import ImageGallery from '../components/image-gallery/ImageGallery'
 
 const Home = () => {
   return (
@@ -113,6 +114,19 @@ const Home = () => {
               <div className='experience-img'>
                 <img src={experienceImg} alt='Experience Image' />
               </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg={12}>
+              <SectionTitle sectionTitle={'Gallery'} />
+              <h2 className='gallery-title'>Visit our customers gallery</h2>
+            </Col>
+            <Col lg={12}>
+              <ImageGallery />
             </Col>
           </Row>
         </Container>

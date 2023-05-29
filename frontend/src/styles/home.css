@@ -111,3 +111,9 @@
   border-radius: 20px;
   object-fit: cover;
 }
+
+.gallery-title {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+}
