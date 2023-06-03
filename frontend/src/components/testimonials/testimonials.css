@@ -1,0 +1,21 @@
+.testimonial {
+  padding: 1rem 0.75rem;
+}
+
+.img-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.testimonials-img {
+  width: 50%;
+  height: 25%;
+  border-radius: 0.2rem;
+}
+
+.username {
+  margin-bottom: 0;
+  margin-top: 3rem;
+}

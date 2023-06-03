@@ -1,9 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/home.css'
 import { Container, Row, Col } from 'reactstrap'
 import hero1 from '../assets/hero1.jpg'
 import hero2 from '../assets/hero2.jpeg'
-import hero3 from '../assets/hero3.jpeg'
 import hero_video from '../assets/hero-video.mp4'
 import experienceImg from '../assets/experience.png'
 import SectionTitle from '../shared/SectionTitle'
@@ -11,6 +11,7 @@ import SectionTitle from '../shared/SectionTitle'
 import SearchBar from '../shared/SearchBar'
 import FeaturedToursList from '../components/featured-tours/FeaturedToursList'
 import ImageGallery from '../components/image-gallery/ImageGallery'
+import Testimonials from '../components/testimonials/Testimonials'
 
 const Home = () => {
   return (
@@ -32,7 +33,9 @@ const Home = () => {
                   the world? Let's turn your travel dreams into reality!
                 </p>
                 <div className='button_container'>
-                  <button className='btn primary__btn'>Book Now</button>
+                  <Link to='/tours' className='btn primary__btn book-btn'>
+                    Book Now
+                  </Link>
                 </div>
               </div>
             </Col>
@@ -127,6 +130,19 @@ const Home = () => {
             </Col>
             <Col lg={12}>
               <ImageGallery />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col lg={12}>
+              <SectionTitle sectionTitle={'Testimonials'} />
+              <h2 className='testimonial-title'>What our fans say about us</h2>
+            </Col>
+            <Col lg={12}>
+              <Testimonials />
             </Col>
           </Row>
         </Container>
