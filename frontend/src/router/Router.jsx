@@ -7,6 +7,7 @@ import TourData from '../pages/TourData'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Search from '../pages/Search'
+import NotFound from '../pages/NotFound'
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/search' element={<Search />} />
+      <Route path='*' element={<NotFound />} />
     </Routes>
   )
 }
