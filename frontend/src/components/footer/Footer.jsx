@@ -2,7 +2,19 @@ import React from 'react'
 import './footer.css'
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFacebook,
+  faGithub,
+  faInstagram,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons'
 import logo from '/logo3.png'
+import {
+  faEnvelope,
+  faLocationDot,
+  faPhone,
+} from '@fortawesome/free-solid-svg-icons'
 
 const quick__links = [
   {
@@ -39,101 +51,98 @@ const Footer = () => {
 
   return (
     <footer className='footer'>
-      <Container>
-        <Row>
-          <Col lg='3'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-3'>
             <div className='logo'>
               <img src={logo} alt='' />
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Commodi, enim.
-              </p>
+              <p>Hop In! is the world's leading travel agency.</p>
               <div className='social__link d-flex align-items-center gap-4'>
                 <span>
                   <Link to='#'>
-                    <i class='ri-youtube-line'></i>
+                    <FontAwesomeIcon icon={faYoutube} />
                   </Link>
                 </span>
                 <span>
                   <Link to='#'>
-                    <i class='ri-github-fill'></i>
+                    <FontAwesomeIcon icon={faGithub} />
                   </Link>
                 </span>
                 <span>
                   <Link to='#'>
-                    <i class='ri-facebook-circle-line'></i>
+                    <FontAwesomeIcon icon={faFacebook} />
                   </Link>
                 </span>
                 <span>
                   <Link to='#'>
-                    <i class='ri-instagram-line'></i>
+                    <FontAwesomeIcon icon={faInstagram} />
                   </Link>
                 </span>
               </div>
             </div>
-          </Col>
+          </div>
 
-          <Col lg='3'>
+          <div className='col-lg-3'>
             <h5 className='footer__link-title'>Discover</h5>
 
-            <ListGroup className='footer__quick-links'>
+            <ul className='footer__quick-links'>
               {quick__links.map((item, index) => (
-                <ListGroupItem key={index} className='ps-0 border-0'>
+                <li key={index} className='ps-0 border-0'>
                   <Link to={item.path}>{item.display}</Link>
-                </ListGroupItem>
+                </li>
               ))}
-            </ListGroup>
-          </Col>
-          <Col lg='3'>
+            </ul>
+          </div>
+          <div className='col-lg-3'>
             <h5 className='footer__link-title'>Quick Links</h5>
 
-            <ListGroup className='footer__quick-links'>
+            <ul className='footer__quick-links'>
               {quick__links2.map((item, index) => (
-                <ListGroupItem key={index} className='ps-0 border-0'>
+                <li key={index} className='ps-0 border-0'>
                   <Link to={item.path}>{item.display}</Link>
-                </ListGroupItem>
+                </li>
               ))}
-            </ListGroup>
-          </Col>
-          <Col lg='3'>
+            </ul>
+          </div>
+          <div className='col-lg-3'>
             <h5 className='footer__link-title'>Contact</h5>
 
-            <ListGroup className='footer__quick-links'>
-              <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
+            <ul className='footer__quick-links'>
+              <li className='ps-0 border-0 d-flex align-items-center gap-3'>
                 <h6 className='mb-0 d-flex align-items-center gap-2'>
                   <span>
-                    <i class='ri-map-pin-line'></i>
+                    <FontAwesomeIcon icon={faLocationDot} />
                   </span>
                   Address:
                 </h6>
-                <p className='mb-0'>Lorem</p>
-              </ListGroupItem>
+                <p className='mb-0'>C. Amiel, s/n, Cádiz</p>
+              </li>
 
-              <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
+              {/*               <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
                 <h6 className='mb-0 d-flex align-items-center gap-2'>
                   <span>
-                    <i class='ri-mail-line'></i>
+                    <FontAwesomeIcon icon={faEnvelope} />
                   </span>
                   Email:
                 </h6>
 
-                <p className='mb-0'>Lorem</p>
-              </ListGroupItem>
+                <p className='mb-0'>hop.in.travel.agency.23@gmail.com</p>
+              </ListGroupItem> */}
 
-              <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
+              <li className='ps-0 border-0 d-flex align-items-center gap-3'>
                 <h6 className='mb-0 d-flex align-items-center gap-2'>
                   <span>
-                    <i class='ri-phone-fill'></i>
+                    <FontAwesomeIcon icon={faPhone} />
                   </span>
                   Phone:
                 </h6>
 
-                <p className='mb-0'>Lorem</p>
-              </ListGroupItem>
-            </ListGroup>
-          </Col>
-        </Row>
-      </Container>
+                <p className='mb-0'>956 24 33 17</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
   )
 }
