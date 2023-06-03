@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/home.css'
-import { Container, Row, Col } from 'reactstrap'
 import hero1 from '../assets/hero1.jpg'
 import hero2 from '../assets/hero2.jpeg'
 import hero_video from '../assets/hero-video.mp4'
@@ -17,9 +16,9 @@ const Home = () => {
   return (
     <>
       <section>
-        <Container className='my_container'>
-          <Row className='my_row'>
-            <Col lg={6} className='my-col-lg-6'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-6'>
               <div className='hero_content'>
                 <div className='hero_title'>
                   <SectionTitle sectionTitle='Discover Your Next Adventure With Us! 🌈' />
@@ -38,19 +37,19 @@ const Home = () => {
                   </Link>
                 </div>
               </div>
-            </Col>
+            </div>
 
-            <Col lg={2} className='my-col-lg-2'>
+            <div className='col-lg-2'>
               <div className='hero_img_box-1'>
                 <img src={hero1} alt='hero1' className='hero_img' />
               </div>
-            </Col>
-            <Col lg={2} className='my-col-lg-2'>
+            </div>
+            <div className='col-lg-2'>
               <div className='hero_img_box-2'>
                 <img src={hero2} alt='hero2' className='hero_img' />
               </div>
-            </Col>
-            <Col lg={2} className='my-col-lg-2'>
+            </div>
+            <div className='col-lg-2'>
               <div className='hero_img_box-3'>
                 <video
                   src={hero_video}
@@ -61,26 +60,26 @@ const Home = () => {
                   muted
                 />
               </div>
-            </Col>
+            </div>
             <SearchBar />
-          </Row>
-        </Container>
+          </div>
+        </div>
       </section>
       <section>
-        <Container className='my_container'>
-          <Row className='my_row'>
-            <Col lg={12} className='my-col-lg-12 mb-5'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-12 featured-section'>
               <SectionTitle sectionTitle='Explore' />
               <h2 className='featured-tour-title'>Our featured tours</h2>
-            </Col>
+            </div>
             <FeaturedToursList />
-          </Row>
-        </Container>
+          </div>
+        </div>
       </section>
       <section>
-        <Container>
-          <Row>
-            <Col lg={6} className=''>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-6'>
               <div className='experience-content'>
                 <SectionTitle sectionTitle='Experience' />
                 <h2>
@@ -112,40 +111,40 @@ const Home = () => {
                   <h6>Years Experience</h6>
                 </div>
               </div>
-            </Col>
-            <Col lg={6} className=''>
+            </div>
+            <div className='col-lg-6'>
               <div className='experience-img'>
                 <img src={experienceImg} alt='Experience Image' />
               </div>
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </section>
       <section>
-        <Container>
-          <Row>
-            <Col lg={12}>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-12'>
               <SectionTitle sectionTitle={'Gallery'} />
               <h2 className='gallery-title'>Visit our customers gallery</h2>
-            </Col>
-            <Col lg={12}>
+            </div>
+            <div className='col-lg-12'>
               <ImageGallery />
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </section>
       <section>
-        <Container>
-          <Row>
-            <Col lg={12}>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-12'>
               <SectionTitle sectionTitle={'Testimonials'} />
               <h2 className='testimonial-title'>What our fans say about us</h2>
-            </Col>
-            <Col lg={12}>
+            </div>
+            <div className='col-lg-12'>
               <Testimonials />
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   )

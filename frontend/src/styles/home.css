@@ -11,6 +11,7 @@
 
 .book-btn {
   text-decoration: none;
+  color: #fff;
 }
 
 .book-btn:visited {
@@ -67,6 +68,10 @@
 .title-service {
   font-size: 2.5rem;
   font-weight: 500;
+}
+
+.featured-section {
+  margin-bottom: 1.25rem;
 }
 
 .featured-tour-title {
