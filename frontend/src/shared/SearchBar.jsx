@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './search-bar.css'
 import { ToastContainer, toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,23 +12,20 @@ import {
 
 const SearchBar = () => {
   // Initialize useRef variables for location, distance, and maxPeople
-  const location = useRef('')
-  const duration = useRef(0)
-  const maxPeople = useRef(0)
+  const locationRef = useRef('')
+  const durationRef = useRef(0)
+  const maxPeopleRef = useRef(0)
+  const navigate = useNavigate()
 
   // Function to handle the submit button
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    console.log(location.current.value)
-    console.log(duration.current.value)
-    console.log(maxPeople.current.value)
+    const location = locationRef.current.value
+    const duration = durationRef.current.value
+    const maxPeople = maxPeopleRef.current.value
 
     //Control the inputs
-    if (
-      location.current.value === '' ||
-      duration.current.value === '' ||
-      maxPeople.current.value === ''
-    ) {
+    if (location === '' || duration === '' || maxPeople === '') {
       // Notify the user that the inputs are empty
       toast.error('Please fill in all the fields', {
         position: 'top-center',
@@ -37,6 +35,29 @@ const SearchBar = () => {
         pauseOnHover: true,
         draggable: true,
       })
+    } else {
+      const res = await fetch(
+        `${
+          import.meta.env.VITE_LOCAL_URL
+        }/tours/search-main?city=${location}&duration=${duration}&groupSize=${maxPeople}`
+      )
+
+      if (!res.ok)
+        toast.error('Something went wrong. Please try again later', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        })
+
+      const result = await res.json()
+
+      navigate(
+        `/tours/search?city=${location}&duration=${duration}&groupSize=${maxPeople}`,
+        { state: result.data }
+      )
     }
   }
 
@@ -54,7 +75,7 @@ const SearchBar = () => {
               <input
                 type='text'
                 placeholder='Where are you going?'
-                ref={location}
+                ref={locationRef}
               />
             </div>
           </div>
@@ -64,7 +85,11 @@ const SearchBar = () => {
             </span>
             <div>
               <h6>Duration</h6>
-              <input type='number' placeholder='Duration days' ref={duration} />
+              <input
+                type='number'
+                placeholder='Duration days'
+                ref={durationRef}
+              />
             </div>
           </div>
           <div className='form-group'>
@@ -73,7 +98,7 @@ const SearchBar = () => {
             </span>
             <div>
               <h6>Max People</h6>
-              <input type='number' placeholder='0' ref={maxPeople} />
+              <input type='number' placeholder='0' ref={maxPeopleRef} />
             </div>
           </div>
 
