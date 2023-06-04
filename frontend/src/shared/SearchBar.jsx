@@ -13,20 +13,20 @@ import {
 const SearchBar = () => {
   // Initialize useRef variables for location, distance, and maxPeople
   const location = useRef('')
-  const distance = useRef(0)
+  const duration = useRef(0)
   const maxPeople = useRef(0)
 
   // Function to handle the submit button
   const handleSubmit = e => {
     e.preventDefault()
     console.log(location.current.value)
-    console.log(distance.current.value)
+    console.log(duration.current.value)
     console.log(maxPeople.current.value)
 
     //Control the inputs
     if (
       location.current.value === '' ||
-      distance.current.value === '' ||
+      duration.current.value === '' ||
       maxPeople.current.value === ''
     ) {
       // Notify the user that the inputs are empty
@@ -42,11 +42,11 @@ const SearchBar = () => {
   }
 
   return (
-    <Col lg='12' className='my-col-lg-12'>
+    <div className='col-lg-12'>
       <div className='search-bar'>
         <ToastContainer />
-        <Form className='search-bar-form'>
-          <FormGroup className='form-group form-slash'>
+        <form className='search-bar-form'>
+          <div className='form-group form-slash'>
             <span>
               <FontAwesomeIcon icon={faMapLocationDot} />
             </span>
@@ -58,17 +58,17 @@ const SearchBar = () => {
                 ref={location}
               />
             </div>
-          </FormGroup>
-          <FormGroup className='form-group form-slash'>
+          </div>
+          <div className='form-group form-slash'>
             <span>
               <FontAwesomeIcon icon={faRoute} />
             </span>
             <div>
-              <h6>Distance</h6>
-              <input type='number' placeholder='Distance km' ref={distance} />
+              <h6>Duration</h6>
+              <input type='number' placeholder='Duration days' ref={duration} />
             </div>
-          </FormGroup>
-          <FormGroup className='form-group'>
+          </div>
+          <div className='form-group'>
             <span>
               <FontAwesomeIcon icon={faUserGroup} />
             </span>
@@ -76,14 +76,14 @@ const SearchBar = () => {
               <h6>Max People</h6>
               <input type='number' placeholder='0' ref={maxPeople} />
             </div>
-          </FormGroup>
+          </div>
 
           <span className='search-icon' type='submit' onClick={handleSubmit}>
             <FontAwesomeIcon icon={faSearch} />
           </span>
-        </Form>
+        </form>
       </div>
-    </Col>
+    </div>
   )
 }
 
