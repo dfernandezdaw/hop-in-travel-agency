@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import './search-bar.css'
-import { Col, Form, FormGroup } from 'reactstrap'
 import { ToastContainer, toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {

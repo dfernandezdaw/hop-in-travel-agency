@@ -3,6 +3,7 @@ import PageBanner from '../shared/PageBanner'
 import { RaceBy } from '@uiball/loaders'
 import TourCard from '../shared/TourCard'
 import '../styles/tours.css'
+import ToursSearchBar from '../shared/ToursSearchBar'
 
 const Tours = () => {
   const [tours, setTours] = useState([])
@@ -51,13 +52,48 @@ const Tours = () => {
     setCurrentPage(page)
   }
 
+  const handleSearch = searchTerm => {
+    // Call the API to search for tours post method with searchTerm
+    const searchTours = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch(
+          `${import.meta.env.VITE_LOCAL_URL}/tours/search`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ location: searchTerm }),
+          }
+        )
+        const data = await response.json()
+        console.log(data.data)
+        setTours(data.data)
+        setTotalPages(1)
+        setCurrentPage(1)
+        setLoading(false)
+      } catch (error) {
+        console.error('Error searching tours:', error)
+        setLoading(false)
+      }
+    }
+
+    // If the searchTerm is empty, fetch all the tours
+    if (!searchTerm || !searchTerm.trim()) {
+      fetchTours() // Call the fetchTours function
+    } else {
+      searchTours()
+    }
+  }
+
   return (
     <>
       <PageBanner title='Tours' />
       <section>
         <div className='container'>
           <div className='row'>
-            <div>New Searchbar</div>
+            <ToursSearchBar onSearch={handleSearch} />
           </div>
         </div>
       </section>
