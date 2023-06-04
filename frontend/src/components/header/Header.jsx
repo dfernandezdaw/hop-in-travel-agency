@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button, Container, Row } from 'reactstrap'
 import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -15,8 +14,8 @@ const navLinks = [
 const Header = () => {
   return (
     <header className='header'>
-      <Container className='my_container'>
-        <Row>
+      <div className='container'>
+        <div className='row'>
           <div className='nav__wrapper'>
             <Link to='/' className='logo'>
               <img src='/logo3.png' alt='Hop In! Logo' />
@@ -41,20 +40,20 @@ const Header = () => {
 
             <div className='nav__right'>
               <div className='nav__btns'>
-                <Button className='btn secondary__btn'>
+                <button className='btn secondary__btn'>
                   <Link to='/login'>Login</Link>
-                </Button>
-                <Button className='btn primary__btn'>
+                </button>
+                <button className='btn primary__btn'>
                   <Link to='/register'>Register</Link>
-                </Button>
+                </button>
               </div>
               <span className='mobile__menu'>
                 <FontAwesomeIcon icon={faBars} />
               </span>
             </div>
           </div>
-        </Row>
-      </Container>
+        </div>
+      </div>
     </header>
   )
 }
