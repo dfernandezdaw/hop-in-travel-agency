@@ -6,6 +6,15 @@
   margin-top: 3rem;
 }
 
+.search-bar-tours {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  box-shadow: 0px 48px 100px 0px rgba(17, 12, 46, 0.15);
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
 .search-bar-form {
   display: flex;
   align-items: center;

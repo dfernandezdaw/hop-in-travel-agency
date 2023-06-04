@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import './search-bar.css'
-import { ToastContainer, toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapLocationDot, faSearch } from '@fortawesome/free-solid-svg-icons'
 
@@ -31,8 +30,7 @@ const ToursSearchBar = ({ onSearch }) => {
 
   return (
     <div className='col-lg-12'>
-      <div className='search-bar'>
-        <ToastContainer />
+      <div className='search-bar-tours'>
         <form className='search-bar-form'>
           <div className='form-group form-slash'>
             <span>
