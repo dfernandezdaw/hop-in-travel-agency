@@ -1,7 +1,7 @@
 import React from 'react'
 import TourCard from '../../shared/TourCard'
 import useFetch from './../../hooks/useFetch'
-import { Col } from 'reactstrap'
+import './featured-tour.css'
 import { RaceBy } from '@uiball/loaders'
 
 const FeaturedToursList = () => {
@@ -38,9 +38,9 @@ const FeaturedToursList = () => {
       {!loading &&
         !error &&
         featuredToursToDisplay?.map(tour => (
-          <Col lg='3' className='mb-4 my-col-lg-3' key={tour._id}>
+          <div className='tour-card-wrapper col-lg-3' key={tour._id}>
             <TourCard tour={tour} />
-          </Col>
+          </div>
         ))}
     </>
   )
