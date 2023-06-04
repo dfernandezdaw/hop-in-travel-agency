@@ -13,6 +13,7 @@ const TourCard = ({ tour }) => {
   //console.log(reviews)
 
   useEffect(() => {
+    // Fetch the ratings for each review and store them in the rating state
     const fetchRatings = async () => {
       const uniqueReviews = [...new Set(reviews)]
       const fetchedRatings = await Promise.all(
@@ -37,13 +38,13 @@ const TourCard = ({ tour }) => {
 
   return (
     <div className='tour-card'>
-      <Card>
+      <div className='card'>
         <div className='tour-img'>
           <img src={images[0]} alt='Image of the tour' />
           {featured && <span>Featured</span>}
         </div>
 
-        <CardBody>
+        <div className='card-body'>
           <div className='card-top'>
             <span className='tour-location'>
               <FontAwesomeIcon icon={faLocationDot} /> {city}
@@ -69,8 +70,8 @@ const TourCard = ({ tour }) => {
               <Link to={`/tours/${_id}`}>Book Now</Link>
             </button>
           </div>
-        </CardBody>
-      </Card>
+        </div>
+      </div>
     </div>
   )
 }
