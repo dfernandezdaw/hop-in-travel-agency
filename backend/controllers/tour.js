@@ -10,7 +10,7 @@ const getTours = async (req, res) => {
       .exec()
     const count = await Tour.countDocuments()
     res.json({
-      tours,
+      data: tours,
       totalPages: Math.ceil(count / limit),
       currentPage: page,
     })
