@@ -87,7 +87,7 @@ const Footer = () => {
 
             <ul className='footer__quick-links'>
               {quick__links.map((item, index) => (
-                <li key={index} className='ps-0 border-0'>
+                <li key={index}>
                   <Link to={item.path}>{item.display}</Link>
                 </li>
               ))}
@@ -98,7 +98,7 @@ const Footer = () => {
 
             <ul className='footer__quick-links'>
               {quick__links2.map((item, index) => (
-                <li key={index} className='ps-0 border-0'>
+                <li key={index}>
                   <Link to={item.path}>{item.display}</Link>
                 </li>
               ))}
@@ -108,36 +108,24 @@ const Footer = () => {
             <h5 className='footer__link-title'>Contact</h5>
 
             <ul className='footer__quick-links'>
-              <li className='ps-0 border-0 d-flex align-items-center gap-3'>
-                <h6 className='mb-0 d-flex align-items-center gap-2'>
+              <li>
+                <h6>
                   <span>
                     <FontAwesomeIcon icon={faLocationDot} />
                   </span>
                   Address:
                 </h6>
-                <p className='mb-0'>C. Amiel, s/n, Cádiz</p>
+                <p>C. Amiel, s/n, Cádiz</p>
               </li>
-
-              {/*               <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-3'>
-                <h6 className='mb-0 d-flex align-items-center gap-2'>
-                  <span>
-                    <FontAwesomeIcon icon={faEnvelope} />
-                  </span>
-                  Email:
-                </h6>
-
-                <p className='mb-0'>hop.in.travel.agency.23@gmail.com</p>
-              </ListGroupItem> */}
-
-              <li className='ps-0 border-0 d-flex align-items-center gap-3'>
-                <h6 className='mb-0 d-flex align-items-center gap-2'>
+              <li>
+                <h6>
                   <span>
                     <FontAwesomeIcon icon={faPhone} />
                   </span>
                   Phone:
                 </h6>
 
-                <p className='mb-0'>956 24 33 17</p>
+                <p>956 24 33 17</p>
               </li>
             </ul>
           </div>
