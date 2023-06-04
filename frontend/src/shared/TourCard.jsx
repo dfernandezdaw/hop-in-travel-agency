@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Card, CardBody } from 'reactstrap'
 import { useEffect, useState } from 'react'
 import { faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,9 +13,7 @@ const TourCard = ({ tour }) => {
   //console.log(reviews)
 
   useEffect(() => {
-    // Fetch the ratings for each review and store them in the rating state array
     const fetchRatings = async () => {
-      // Remove duplicate reviews from the reviews array
       const uniqueReviews = [...new Set(reviews)]
       const fetchedRatings = await Promise.all(
         uniqueReviews.map(async review => {
@@ -38,13 +37,13 @@ const TourCard = ({ tour }) => {
 
   return (
     <div className='tour-card'>
-      <div className='card'>
+      <Card>
         <div className='tour-img'>
           <img src={images[0]} alt='Image of the tour' />
           {featured && <span>Featured</span>}
         </div>
 
-        <div className='card-body'>
+        <CardBody>
           <div className='card-top'>
             <span className='tour-location'>
               <FontAwesomeIcon icon={faLocationDot} /> {city}
@@ -70,8 +69,8 @@ const TourCard = ({ tour }) => {
               <Link to={`/tours/${_id}`}>Book Now</Link>
             </button>
           </div>
-        </div>
-      </div>
+        </CardBody>
+      </Card>
     </div>
   )
 }
