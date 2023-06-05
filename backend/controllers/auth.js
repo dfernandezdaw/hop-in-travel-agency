@@ -47,6 +47,7 @@ const login = async (req, res) => {
           id: user._id,
           name: user.name,
           email: user.email,
+          isEmailVerified: user.verified,
         })
       } else {
         res.status(401).json({ message: 'Invalid password' })
