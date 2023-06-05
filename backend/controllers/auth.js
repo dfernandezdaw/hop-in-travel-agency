@@ -33,7 +33,7 @@ const login = async (req, res) => {
         const token = jwt.sign(
           {
             id: user._id,
-            name: user.name,
+            username: user.username,
             email: user.email,
           },
           process.env.JWT_SECRET, // This is the secret key used to sign the token.
@@ -45,7 +45,7 @@ const login = async (req, res) => {
         res.json({
           token,
           id: user._id,
-          name: user.name,
+          username: user.username,
           email: user.email,
           isEmailVerified: user.verified,
         })
@@ -68,7 +68,7 @@ const register = async (req, res) => {
       // Hash the password before saving it to the database
       const hashedPassword = await bcrypt.hash(req.body.password, 10)
       const newUser = new User({
-        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: hashedPassword,
       })
