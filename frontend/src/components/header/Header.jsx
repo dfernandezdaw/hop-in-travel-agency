@@ -1,5 +1,6 @@
-import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,6 +13,12 @@ const navLinks = [
 ]
 
 const Header = () => {
+  const navigate = useNavigate()
+  const { user, dispatch } = useContext(AuthContext)
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' })
+    navigate('/')
+  }
   return (
     <header className='header'>
       <div className='container'>
@@ -40,12 +47,23 @@ const Header = () => {
 
             <div className='nav__right'>
               <div className='nav__btns'>
-                <button className='btn secondary__btn'>
-                  <Link to='/login'>Login</Link>
-                </button>
-                <button className='btn primary__btn'>
-                  <Link to='/register'>Register</Link>
-                </button>
+                {user ? (
+                  <>
+                    <h5>{user.email}</h5>
+                    <button className='btn secondary__btn' onClick={logout}>
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button className='btn secondary__btn'>
+                      <Link to='/login'>Login</Link>
+                    </button>
+                    <button className='btn primary__btn'>
+                      <Link to='/register'>Register</Link>
+                    </button>
+                  </>
+                )}
               </div>
               <span className='mobile__menu'>
                 <FontAwesomeIcon icon={faBars} />

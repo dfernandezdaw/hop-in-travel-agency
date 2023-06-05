@@ -1,0 +1,106 @@
+.login-container {
+  display: flex;
+  justify-content: space-between;
+}
+.login-img {
+  width: 60%;
+  text-align: center;
+}
+
+.login-img img {
+  width: 70%;
+  object-fit: contain;
+}
+
+.login-form {
+  padding: 50px;
+  background: var(--secondary-color);
+  position: relative;
+}
+
+.login-container {
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  margin-top: 10px;
+}
+
+.login-form .user {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%, -9%);
+}
+
+.login-form .user img {
+  width: 100%;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.login-form {
+  width: 60%;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  color: var(--heading-color);
+}
+
+.login-form input:focus {
+  outline: none;
+}
+
+.login-form p {
+  font-size: 0.8rem;
+  color: #fff;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.login-form p a {
+  color: var(--heading-color);
+  text-decoration: none;
+  margin-left: 5px;
+  font-weight: 500;
+}
+
+.auth-btn {
+  background: var(--heading-color) !important;
+  width: 100%;
+  color: #fff !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-img {
+    display: none;
+  }
+
+  .login-form {
+    width: 70%;
+    margin: auto;
+  }
+
+  .login-container {
+    padding-bottom: 3rem;
+    margin-top: 70px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .login-form {
+    width: 100%;
+  }
+
+  .login-container {
+    padding-bottom: 1rem;
+  }
+}
