@@ -7,6 +7,7 @@ import TourData from '../pages/TourData'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Search from '../pages/Search'
+import VerifyEmail from '../pages/VerifyEmail'
 import NotFound from '../pages/NotFound'
 
 const Router = () => {
@@ -19,6 +20,7 @@ const Router = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/tours/search' element={<Search />} />
+      <Route path='/verify-email/:token' element={<VerifyEmail />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   )
