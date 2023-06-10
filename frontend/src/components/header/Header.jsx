@@ -49,7 +49,7 @@ const Header = () => {
               <div className='nav__btns'>
                 {user ? (
                   <>
-                    <h5>{user.email}</h5>
+                    <h5>{user.username}</h5>
                     <button className='btn secondary__btn' onClick={logout}>
                       Logout
                     </button>

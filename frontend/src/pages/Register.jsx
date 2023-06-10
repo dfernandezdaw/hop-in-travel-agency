@@ -7,7 +7,7 @@ import { AuthContext } from '../context/AuthContext'
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
-    userName: undefined,
+    username: undefined,
     email: undefined,
     password: undefined,
   })
@@ -23,13 +23,17 @@ const Register = () => {
     e.preventDefault()
 
     try {
-      const res = await fetch(`${BASE_URL}/auth/register`, {
-        method: 'post',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      })
+      const res = await fetch(
+        `${import.meta.env.VITE_LOCAL_URL}/auth/register`,
+        {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify(credentials),
+        }
+      )
       const result = await res.json()
 
       if (!res.ok) alert(result.message)
@@ -45,8 +49,8 @@ const Register = () => {
     <section>
       <div className='container'>
         <div className='row'>
-          <div className='col-lg-8 m-auto'>
-            <div className='login-container d-flex justify-content-between'>
+          <div className='col-lg-8 center'>
+            <div className='login-container'>
               <div className='login-img'>
                 <img src={registerImg} alt='' />
               </div>
@@ -85,10 +89,7 @@ const Register = () => {
                       required
                     />
                   </div>
-                  <button
-                    className='btn secondary__btn auth__btn'
-                    type='submit'
-                  >
+                  <button className='btn secondary-btn auth-btn' type='submit'>
                     Create Account
                   </button>
                 </form>

@@ -1,7 +1,12 @@
+.center {
+  margin: 0 auto;
+}
+
 .login-container {
   display: flex;
   justify-content: space-between;
 }
+
 .login-img {
   width: 60%;
   text-align: center;

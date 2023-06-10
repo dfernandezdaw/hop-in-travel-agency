@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
 import '../styles/login.css'
 import login from '../assets/login.png'
@@ -32,16 +33,44 @@ const Login = () => {
       if (!res.ok) {
         if (res.status === 403) {
           // Handle case when user is not verified
-          alert('User is not verified. Please verify your email.')
+          toast.error('User is not verified. Please verify your email.', {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          })
         } else if (res.status === 401) {
           // Handle case when password is invalid
-          alert('Email or password is incorrect. Please try again.')
+          toast.error('Email or password is incorrect. Please try again.', {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          })
         } else if (res.status === 404) {
           // Handle case when user does not exist
-          alert('User does not exist.')
+          toast.error('User not registered. Please register to continue.', {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          })
         } else {
           // Handle other error cases
-          alert('An error occurred. Please try again later.')
+          toast.error('An error occurred. Please try again', {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          })
         }
       } else {
         console.log(data)
@@ -60,9 +89,10 @@ const Login = () => {
 
   return (
     <section>
+      <ToastContainer />
       <div className='container'>
         <div className='row'>
-          <div className='col-lg-8'>
+          <div className='col-lg-8 center'>
             <div className='login-container'>
               <div className='login-img'>
                 <img src={login} alt='' />
@@ -75,8 +105,8 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit}>
                   <div className='form-group'>
-                    <label htmlFor='email'>Email</label>
                     <input
+                      placeholder='Email'
                       type='email'
                       name='email'
                       id='email'
@@ -85,21 +115,18 @@ const Login = () => {
                     />
                   </div>
                   <div className='form-group'>
-                    <label htmlFor='password'>Password</label>
                     <input
+                      placeholder='Password'
                       type='password'
                       name='password'
                       id='password'
                       onChange={handleChange}
                       required
                     />
-                    <button
-                      className='btn btn-secondary auth-btn'
-                      type='submit'
-                    >
-                      Login
-                    </button>
                   </div>
+                  <button className='btn btn-secondary auth-btn' type='submit'>
+                    Login
+                  </button>
                 </form>
                 <p>
                   Don't have an account? <Link to='/register'>Create</Link>
