@@ -50,7 +50,7 @@ const TourCard = ({ tour }) => {
             </span>
             <span className='tour-rating'>
               <FontAwesomeIcon icon={faStar} />{' '}
-              {avgRating === 0 ? null : avgRating}{' '}
+              {avgRating === 0 ? null : avgRating.toFixed(2)}{' '}
               {rating.length === 0 ? (
                 'Not rated'
               ) : (
