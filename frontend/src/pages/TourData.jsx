@@ -12,6 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ToastContainer, toast } from 'react-toastify'
+import { RaceBy } from '@uiball/loaders'
 
 const TourData = () => {
   const id = useParams().id
@@ -153,6 +154,56 @@ const TourData = () => {
     }
   }
 
+  const handleDeleteReview = async reviewId => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_LOCAL_URL}/reviews/${reviewId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        }
+      )
+
+      if (!res.ok) {
+        // Handle error if the deletion was unsuccessful
+        toast.error('Failed to delete review', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        })
+        return
+      }
+
+      // Update the reviewsData state by removing the deleted review
+      setReviewsData(prevReviews =>
+        prevReviews.filter(review => review._id !== reviewId)
+      )
+
+      // Recalculate the average rating
+      setAvgRating(
+        reviewsData.reduce((acc, curr) => acc + curr.rating, 0) /
+          reviewsData.length
+      )
+
+      toast.success('Review deleted successfully', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   // Scroll to top of page when component mounts or when tour state changes
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -162,7 +213,11 @@ const TourData = () => {
     <section>
       <ToastContainer />
       <div className='container'>
-        {loading && <h4 className='text-center'>Loading...</h4>}
+        {loading && (
+          <div className='spinner'>
+            <RaceBy size={80} lineWeight={5} speed={1.4} color='black' />
+          </div>
+        )}
         {error && <h4 className='text-center'>{error}</h4>}
         {!loading && !error && (
           <div className='row'>
@@ -175,7 +230,7 @@ const TourData = () => {
                   <div className='rating-container'>
                     <span className='tour-rating'>
                       <FontAwesomeIcon icon={faStar} />{' '}
-                      {avgRating === 0 ? null : avgRating}
+                      {avgRating === 0 ? null : avgRating.toFixed(2)}
                       {avgRating === 0 ? (
                         'Not rated'
                       ) : (
@@ -285,6 +340,17 @@ const TourData = () => {
                           </span>
                         </div>
                         <p>{review.review}</p>
+                        {/* If user is not logged in, do not display the delete button */}
+                        {user &&
+                          review.userId &&
+                          user.id === review.userId._id && (
+                            <button
+                              className='delete-button'
+                              onClick={() => handleDeleteReview(review._id)}
+                            >
+                              Delete
+                            </button>
+                          )}
                       </div>
                     ))}
                   </ul>
