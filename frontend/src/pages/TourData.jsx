@@ -120,8 +120,12 @@ const TourData = () => {
           })
         }
 
-        // Update the reviews array with the new review
-        setReviewsData(prevReviews => [...prevReviews, res.data])
+        // Fetch the newly created review and add it to the reviews state
+        const response = await fetch(
+          `${import.meta.env.VITE_LOCAL_URL}/reviews/${res.data._id}`
+        )
+        const newReview = await response.json()
+        setReviewsData(prevReviews => [...prevReviews, newReview.data])
 
         // Calculate the new average rating
         setAvgRating(
@@ -208,23 +212,38 @@ const TourData = () => {
                   <h4>Reviews ({reviews?.length} reviews)</h4>
                   <form onSubmit={handleSubmit}>
                     <div className='form-group'>
-                      <span onClick={() => setTourRating(1)}>
+                      <span
+                        className={`star ${tourRating >= 1 ? 'filled' : ''}`}
+                        onClick={() => setTourRating(1)}
+                      >
                         1
                         <FontAwesomeIcon icon={faStar} />
                       </span>
-                      <span onClick={() => setTourRating(2)}>
+                      <span
+                        className={`star ${tourRating >= 2 ? 'filled' : ''}`}
+                        onClick={() => setTourRating(2)}
+                      >
                         2
                         <FontAwesomeIcon icon={faStar} />
                       </span>
-                      <span onClick={() => setTourRating(3)}>
+                      <span
+                        className={`star ${tourRating >= 3 ? 'filled' : ''}`}
+                        onClick={() => setTourRating(3)}
+                      >
                         3
                         <FontAwesomeIcon icon={faStar} />
                       </span>
-                      <span onClick={() => setTourRating(4)}>
+                      <span
+                        className={`star ${tourRating >= 4 ? 'filled' : ''}`}
+                        onClick={() => setTourRating(4)}
+                      >
                         4
                         <FontAwesomeIcon icon={faStar} />
                       </span>
-                      <span onClick={() => setTourRating(5)}>
+                      <span
+                        className={`star ${tourRating === 5 ? 'filled' : ''}`}
+                        onClick={() => setTourRating(5)}
+                      >
                         5
                         <FontAwesomeIcon icon={faStar} />
                       </span>

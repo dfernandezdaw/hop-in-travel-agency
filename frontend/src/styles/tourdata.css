@@ -63,9 +63,13 @@
 .form-group span {
   display: flex;
   align-items: center;
-  color: var(--secondary-color);
+  color: black;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.form-group span.filled svg {
+  color: gold;
 }
 
 .review-input-container {
