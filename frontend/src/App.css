@@ -1,4 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Domine:400,700');
+/* Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+/* Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+}
 
 :root {
   --primary-color: #44bb80;
@@ -31,7 +47,7 @@ section {
 }
 
 .primary__btn a {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   text-decoration: none;
   color: #fff;
 }
@@ -49,7 +65,7 @@ section {
 
 .secondary__btn a {
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   color: var(--heading-color);
 }
 
