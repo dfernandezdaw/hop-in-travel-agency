@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 import './header.css'
 
@@ -49,10 +49,20 @@ const Header = () => {
               <div className='nav__btns'>
                 {user ? (
                   <>
-                    <h5>{user.username}</h5>
-                    <button className='btn secondary__btn' onClick={logout}>
-                      Logout
-                    </button>
+                    <img
+                      src={
+                        user.profilePicture
+                          ? `http://localhost:3000/uploads/${user.profilePicture}`
+                          : 'http://localhost:3000/uploads/default-avatar.png'
+                      }
+                      alt='Profile Picture'
+                      className='nav-profile-picture'
+                    />
+                    <FontAwesomeIcon
+                      icon={faRightFromBracket}
+                      onClick={logout}
+                      className='logout-icon'
+                    />
                   </>
                 ) : (
                   <>
