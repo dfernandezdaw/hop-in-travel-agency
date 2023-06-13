@@ -336,7 +336,14 @@ const TourData = () => {
                   <ul className='reviews-list'>
                     {reviewsData?.map(review => (
                       <div key={review._id} className='review-item'>
-                        <img src='' alt='userAvatar' />
+                        <img
+                          src={
+                            review.userId
+                              ? `http://localhost:3000/uploads/${review.userId.profilePicture}`
+                              : 'http://localhost:3000/uploads/default-avatar.png'
+                          }
+                          alt='userAvatar'
+                        />
                         <div className='w100'>
                           <div className='user-data'>
                             {/* If user is not logged in, display Anonymous */}
