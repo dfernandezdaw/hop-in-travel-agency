@@ -11,6 +11,7 @@
   border: 1px solid #55eda1;
   border-radius: 0.5rem;
   padding: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .tour-info h2 {
@@ -60,15 +61,20 @@
   margin-bottom: 1.5rem;
 }
 
-.form-group span {
+.stars-container {
   display: flex;
   align-items: center;
+  column-gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stars-container span {
   color: black;
   font-size: 1rem;
   cursor: pointer;
 }
 
-.form-group span.filled svg {
+.stars-container span.filled svg {
   color: gold;
 }
 
