@@ -2,6 +2,7 @@ import React, { useState, useRef, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
 import { AuthContext } from '../context/AuthContext'
+import BookingForm from '../components/booking-form/BookingForm'
 import '../styles/tourdata.css'
 import {
   faDollarSign,
@@ -266,56 +267,70 @@ const TourData = () => {
                 <div className='tour-reviews'>
                   <h4>Reviews ({reviews?.length} reviews)</h4>
                   <form onSubmit={handleSubmit}>
-                    <div className='form-group'>
-                      <span
-                        className={`star ${tourRating >= 1 ? 'filled' : ''}`}
-                        onClick={() => setTourRating(1)}
-                      >
-                        1
-                        <FontAwesomeIcon icon={faStar} />
-                      </span>
-                      <span
-                        className={`star ${tourRating >= 2 ? 'filled' : ''}`}
-                        onClick={() => setTourRating(2)}
-                      >
-                        2
-                        <FontAwesomeIcon icon={faStar} />
-                      </span>
-                      <span
-                        className={`star ${tourRating >= 3 ? 'filled' : ''}`}
-                        onClick={() => setTourRating(3)}
-                      >
-                        3
-                        <FontAwesomeIcon icon={faStar} />
-                      </span>
-                      <span
-                        className={`star ${tourRating >= 4 ? 'filled' : ''}`}
-                        onClick={() => setTourRating(4)}
-                      >
-                        4
-                        <FontAwesomeIcon icon={faStar} />
-                      </span>
-                      <span
-                        className={`star ${tourRating === 5 ? 'filled' : ''}`}
-                        onClick={() => setTourRating(5)}
-                      >
-                        5
-                        <FontAwesomeIcon icon={faStar} />
-                      </span>
-                    </div>
-                    <div className='review-input-container'>
-                      <textarea
-                        placeholder='Write your review here'
-                        name='review'
-                        id='review'
-                        cols='30'
-                        rows='5'
-                        ref={reviewRef}
-                      ></textarea>
-                      <button type='submit' className='btn primary__btn'>
-                        Submit
-                      </button>
-                    </div>
+                    {user && (
+                      <>
+                        <div className='stars-container'>
+                          <span
+                            className={`star ${
+                              tourRating >= 1 ? 'filled' : ''
+                            }`}
+                            onClick={() => setTourRating(1)}
+                          >
+                            1
+                            <FontAwesomeIcon icon={faStar} />
+                          </span>
+                          <span
+                            className={`star ${
+                              tourRating >= 2 ? 'filled' : ''
+                            }`}
+                            onClick={() => setTourRating(2)}
+                          >
+                            2
+                            <FontAwesomeIcon icon={faStar} />
+                          </span>
+                          <span
+                            className={`star ${
+                              tourRating >= 3 ? 'filled' : ''
+                            }`}
+                            onClick={() => setTourRating(3)}
+                          >
+                            3
+                            <FontAwesomeIcon icon={faStar} />
+                          </span>
+                          <span
+                            className={`star ${
+                              tourRating >= 4 ? 'filled' : ''
+                            }`}
+                            onClick={() => setTourRating(4)}
+                          >
+                            4
+                            <FontAwesomeIcon icon={faStar} />
+                          </span>
+                          <span
+                            className={`star ${
+                              tourRating === 5 ? 'filled' : ''
+                            }`}
+                            onClick={() => setTourRating(5)}
+                          >
+                            5
+                            <FontAwesomeIcon icon={faStar} />
+                          </span>
+                        </div>
+                        <div className='review-input-container'>
+                          <textarea
+                            placeholder='Write your review here'
+                            name='review'
+                            id='review'
+                            cols='30'
+                            rows='5'
+                            ref={reviewRef}
+                          ></textarea>
+                          <button type='submit' className='btn primary__btn'>
+                            Submit
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </form>
 
                   <ul className='reviews-list'>
@@ -359,7 +374,7 @@ const TourData = () => {
             </div>
 
             <div className='col-lg-4'>
-              {/*<BookingForm tour={tour} avgRating={avgRating} />*/}
+              <BookingForm tour={tour} avgRating={avgRating} />
             </div>
           </div>
         )}
