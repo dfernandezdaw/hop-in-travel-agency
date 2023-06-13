@@ -32,16 +32,25 @@ const createUser = async (req, res) => {
   }
 }
 
-// Update user
+// Update user. Only update the parameters that are passed in the request body
 const updateUser = async (req, res) => {
   const { id } = req.params
-  const { username, email, password, profilePicture } = req.body
+  const { username, email, password } = req.body
+
   try {
+    if (req.file) {
+      const profilePicture = req.file.filename
+      req.body.profilePicture = profilePicture
+    }
+
     const user = await User.findByIdAndUpdate(
       id,
-      { username, email, password, profilePicture },
+      { username, email, password, profilePicture: req.body.profilePicture }, // Use req.body.profilePicture here
       { new: true }
     )
+    // Hide sensitive data
+    user.password = undefined
+
     res.json({ message: 'User updated successfully', data: user })
   } catch (error) {
     res.status(400).json({ message: 'Failed to update user', error: error })

@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
+const path = require('path')
 const mongoose = require('mongoose')
 const usersRoutes = require('./routes/user')
 const tourRoutes = require('./routes/tour')
@@ -12,8 +14,10 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 5000
 
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+app.use(cors({ origin: 'http://127.0.0.1:5173', credentials: true }))
 app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(cookieParser())
 
 // Connect to MongoDB
@@ -29,6 +33,9 @@ const connect = async () => {
     console.log(`MongoDB connection error: ${error}`)
   }
 }
+
+// Serve static files from the "public/uploads" directory
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')))
 
 // Message with the method, path and actualtime
 app.use((req, res, next) => {
