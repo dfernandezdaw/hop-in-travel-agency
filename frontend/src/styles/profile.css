@@ -62,13 +62,9 @@
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--secondary-color);
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.profile .btn-primary:hover {
-  background-color: #0069d9;
 }

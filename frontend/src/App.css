@@ -16,6 +16,11 @@ h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+
 :root {
   --primary-color: #30845a;
   --terciary-color: #cbf3f0;

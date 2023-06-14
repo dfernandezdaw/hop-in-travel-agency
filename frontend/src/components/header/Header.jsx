@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 import './header.css'
+import Dropdown from '../dropdown/Dropdown'
 
 const navLinks = [
   { title: 'Home', path: '/home' },
@@ -15,10 +16,17 @@ const navLinks = [
 const Header = () => {
   const navigate = useNavigate()
   const { user, dispatch } = useContext(AuthContext)
+  const [showMenu, setShowMenu] = React.useState(false)
+
   const logout = () => {
     dispatch({ type: 'LOGOUT' })
     navigate('/')
   }
+
+  const closeDropdown = () => {
+    setShowMenu(false)
+  }
+
   return (
     <header className='header'>
       <div className='container'>
@@ -49,16 +57,22 @@ const Header = () => {
               <div className='nav__btns'>
                 {user ? (
                   <>
-                    <img
-                      src={
-                        user.profilePicture
-                          ? `http://localhost:3000/uploads/${user.profilePicture}`
-                          : 'http://localhost:3000/uploads/default-avatar.png'
+                    <div className='nav-profile-wrapper'>
+                      <img
+                        src={
+                          user.profilePicture
+                            ? `http://localhost:3000/uploads/${user.profilePicture}`
+                            : 'http://localhost:3000/uploads/default-avatar.png'
+                        }
+                        alt='Profile Picture'
+                        className='nav-profile-picture'
+                        onClick={() => setShowMenu(!showMenu)}
+                      />
+                      {
+                        // Show the dropdown menu if showMenu is true
+                        showMenu && <Dropdown closeDropdown={closeDropdown} />
                       }
-                      alt='Profile Picture'
-                      className='nav-profile-picture'
-                      onClick={() => navigate('/profile')}
-                    />
+                    </div>
                     <FontAwesomeIcon
                       icon={faRightFromBracket}
                       onClick={logout}
