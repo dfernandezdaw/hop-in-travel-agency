@@ -7,11 +7,11 @@
 
 .book-btn {
   text-decoration: none;
-  color: #fff;
+  color: var(--button-text-color);
 }
 
 .book-btn:visited {
-  color: #fff;
+  color: var(--button-text-color);
 }
 
 .hero_content {
