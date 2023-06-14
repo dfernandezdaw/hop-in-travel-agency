@@ -4,7 +4,7 @@ import '../styles/home.css'
 import hero1 from '../assets/hero1.jpg'
 import hero2 from '../assets/hero2.jpeg'
 import hero_video from '../assets/hero-video.mp4'
-import experienceImg from '../assets/experience.png'
+import experienceImg from '../assets/experience.jpg'
 import SectionTitle from '../shared/SectionTitle'
 
 import SearchBar from '../shared/SearchBar'

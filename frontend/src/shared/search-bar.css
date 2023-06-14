@@ -31,7 +31,7 @@
 .form-group span {
   font-size: 1.8rem;
   font-weight: 500;
-  color: #55eda1;
+  color: black;
 }
 
 .form-group input {
@@ -51,7 +51,6 @@
 
 .form-slash {
   border-right: 2px solid #ddd;
-  margin-top: 1.5rem;
 }
 
 .search-icon svg {

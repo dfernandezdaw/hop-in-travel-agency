@@ -11,6 +11,7 @@ import Search from '../pages/Search'
 import VerifyEmail from '../pages/VerifyEmail'
 import Profile from '../pages/Profile'
 import NotFound from '../pages/NotFound'
+import UserBookings from '../pages/UserBookings'
 
 const Router = () => {
   const { user } = useContext(AuthContext)
@@ -28,6 +29,7 @@ const Router = () => {
         path='/profile'
         element={!user ? <Navigate to='/login' /> : <Profile />}
       />
+      <Route path='/bookings' element={<UserBookings />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   )

@@ -68,7 +68,6 @@ const Tours = () => {
           }
         )
         const data = await response.json()
-        console.log(data.data)
         setTours(data.data)
         setTotalPages(1)
         setCurrentPage(1)
