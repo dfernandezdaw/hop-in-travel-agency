@@ -1,6 +1,16 @@
 const Booking = require('../models/Booking')
-const Tour = require('../models/Tour')
-const User = require('../models/User')
+const nodemailer = require('nodemailer')
+const dotenv = require('dotenv')
+dotenv.config()
+
+// Create a transporter for sending emails
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+})
 
 // Get all bookings
 const getBookings = async (req, res) => {
@@ -12,6 +22,28 @@ const getBookings = async (req, res) => {
     res.json({ message: 'Bookings found', data: bookings })
   } catch (error) {
     res.status(400).json({ message: error })
+  }
+}
+
+// Get all bookings for a specific user. Data is paginated
+const getUserBookings = async (req, res) => {
+  const { id } = req.params
+  try {
+    const { page, limit } = req.query
+    const bookings = await Booking.find({ userId: id })
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .populate('tourId')
+      .populate('userId')
+      .exec()
+    const count = await Booking.countDocuments({ userId: id })
+    res.json({
+      data: bookings,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page,
+    })
+  } catch (error) {
+    res.status(400).json({ message: error.message })
   }
 }
 
@@ -34,6 +66,22 @@ const createBooking = async (req, res) => {
   const newBooking = new Booking(req.body)
   try {
     const booking = await newBooking.save()
+
+    // Send email to user with booking details
+    const mailOptions = {
+      from: process.env.EMAIL,
+      to: booking.userId.email,
+      subject: 'Booking confirmation',
+      text: `Thank you for booking ${booking.tourId.name}. The total cost is ${booking.price}.`,
+    }
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(`Email sent: ${info.response}`)
+      }
+    })
+
     res.json({ message: 'Booking created succesfully', data: booking })
   } catch (error) {
     res.status(400).json({ message: 'Failed to create booking', error: error })
@@ -74,4 +122,5 @@ module.exports = {
   getBooking,
   createBooking,
   updateBooking,
+  getUserBookings,
 }
