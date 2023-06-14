@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const bcrypt = require('bcrypt')
 
 // Get all users
 const getUsers = async (req, res) => {
@@ -43,17 +44,41 @@ const updateUser = async (req, res) => {
       req.body.profilePicture = profilePicture
     }
 
-    const user = await User.findByIdAndUpdate(
-      id,
-      { username, email, password, profilePicture: req.body.profilePicture }, // Use req.body.profilePicture here
-      { new: true }
-    )
-    // Hide sensitive data
-    user.password = undefined
+    // If a new password is provided, hash it
+    if (password) {
+      const salt = await bcrypt.genSalt(10)
+      const hashedPassword = await bcrypt.hash(password, salt)
+      req.body.password = hashedPassword
+    }
 
-    res.json({ message: 'User updated successfully', data: user })
+    // Build updated user with data provided in request body
+    const updatedUser = {
+      username,
+      email,
+      profilePicture: req.body.profilePicture,
+    }
+
+    // If a new password is provided, add it to updatedUser
+    if (password) {
+      updatedUser.password = req.body.password
+    }
+
+    // Save updated user to the database
+    const user = await User.findByIdAndUpdate(id, updatedUser, { new: true })
+
+    // Create a new object with selected user properties. This is the object that will be sent in the response
+    const sanitizedUser = {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      profilePicture: user.profilePicture,
+    }
+
+    res.json({ message: 'User updated successfully', data: sanitizedUser })
   } catch (error) {
-    res.status(400).json({ message: 'Failed to update user', error: error })
+    res
+      .status(400)
+      .json({ message: 'Failed to update user', error: error.message })
   }
 }
 
