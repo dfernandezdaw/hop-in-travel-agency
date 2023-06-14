@@ -57,6 +57,7 @@ const Header = () => {
                       }
                       alt='Profile Picture'
                       className='nav-profile-picture'
+                      onClick={() => navigate('/profile')}
                     />
                     <FontAwesomeIcon
                       icon={faRightFromBracket}

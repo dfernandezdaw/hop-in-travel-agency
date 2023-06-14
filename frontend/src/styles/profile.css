@@ -1,0 +1,74 @@
+.profile {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.profile .form-group {
+  margin-bottom: 20px;
+}
+
+.profile label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.profile input[type='text'],
+.profile input[type='email'],
+.profile input[type='password'],
+.profile input[type='file'] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile .btn-primary {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile .btn-primary:hover {
+  background-color: #0069d9;
+}
