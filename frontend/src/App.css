@@ -46,6 +46,11 @@ section {
   text-align: center;
 }
 
+.text-danger {
+  color: red !important;
+  font-size: 0.9rem !important;
+}
+
 .primary__btn {
   background: var(--secondary-color) !important;
   border: none !important;

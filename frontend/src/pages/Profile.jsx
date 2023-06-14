@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { useContext } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import '../styles/profile.css'
 
@@ -19,9 +20,14 @@ const Profile = () => {
     confirmPassword: '',
   })
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    trigger,
+  } = useForm()
 
+  const onSubmit = async () => {
     const { username, email, password, confirmPassword, profilePicture } =
       profile
 
@@ -53,8 +59,7 @@ const Profile = () => {
         }
       )
       toast.success('Profile updated successfully')
-      // Update the user in the context
-      dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user })
+      dispatch({ type: 'UPDATE_USER', payload: response.data.user })
     } catch (error) {
       console.error(error)
     }
@@ -63,6 +68,11 @@ const Profile = () => {
   const handleChange = e => {
     setProfile({ ...profile, [e.target.name]: e.target.value })
   }
+
+  const handleBlur = async fieldName => {
+    await trigger(fieldName)
+  }
+
   return (
     <section className='profile'>
       <ToastContainer />
@@ -79,11 +89,17 @@ const Profile = () => {
                 alt=''
               />
             </div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className='form-group'>
                 <label htmlFor='profilePicture'>Profile Picture</label>
                 <input
                   type='file'
+                  {...register('profilePicture', {
+                    pattern: {
+                      value: /\.(jpe?g|png|gif)$/i,
+                      message: 'Invalid image format',
+                    },
+                  })}
                   name='profilePicture'
                   id='profilePicture'
                   accept='.jpeg, .jpg, .png, .gif'
@@ -95,18 +111,39 @@ const Profile = () => {
                       profilePicture: e.target.files[0],
                     })
                   }}
+                  onBlur={() => handleBlur('profilePicture')}
                 />
+                {errors.profilePicture && (
+                  <span className='text-danger'>
+                    {errors.profilePicture.message}
+                  </span>
+                )}
               </div>
               <div className='form-group'>
                 <label htmlFor='username'>Username</label>
                 <input
                   type='text'
+                  {...register('username', {
+                    required: 'Username is required',
+                    minLength: {
+                      value: 3,
+                      message: 'Username must be at least 3 characters long',
+                    },
+                    maxLength: {
+                      value: 20,
+                      message: 'Username must not exceed 20 characters',
+                    },
+                  })}
                   name='username'
                   id='username'
                   className='form-control'
                   value={profile.username}
                   onChange={handleChange}
+                  onBlur={() => handleBlur('username')}
                 />
+                {errors.username && (
+                  <span className='text-danger'>{errors.username.message}</span>
+                )}
               </div>
               <div className='form-group'>
                 <label htmlFor='email'>Email</label>
@@ -123,21 +160,75 @@ const Profile = () => {
                 <label htmlFor='password'>Password</label>
                 <input
                   type='password'
+                  {...register('password', {
+                    minLength: {
+                      value: 6,
+                      message: 'Password must be at least 6 characters long',
+                    },
+                    pattern: {
+                      value:
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{6,}$/,
+                      message:
+                        'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character',
+                    },
+                  })}
                   name='password'
                   id='password'
                   className='form-control'
                   onChange={handleChange}
+                  onBlur={() => handleBlur('password')}
                 />
+                {errors.password?.type === 'minLength' && (
+                  <span className='text-danger'>
+                    Password must be at least 6 characters long
+                  </span>
+                )}
+                {errors.password?.type === 'pattern' && (
+                  <span className='text-danger'>
+                    Password must contain at least one uppercase letter, one
+                    lowercase letter, one number and one special character
+                  </span>
+                )}
               </div>
               <div className='form-group'>
                 <label htmlFor='confirmPassword'>Confirm Password</label>
                 <input
                   type='password'
+                  {...register('confirmPassword', {
+                    minLength: {
+                      value: 6,
+                      message: 'Password must be at least 6 characters long',
+                    },
+                    pattern: {
+                      value:
+                        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{6,}$/,
+                      message:
+                        'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character',
+                    },
+                    validate: value =>
+                      value === profile.password || 'Passwords do not match',
+                  })}
                   name='confirmPassword'
                   id='confirmPassword'
                   className='form-control'
                   onChange={handleChange}
+                  onBlur={() => handleBlur('confirmPassword')}
                 />
+                {errors.confirmPassword?.type === 'minLength' && (
+                  <span className='text-danger'>
+                    Password must be at least 6 characters long
+                  </span>
+                )}
+                {errors.confirmPassword?.type === 'pattern' && (
+                  <span className='text-danger'>
+                    Password must contain at least one uppercase letter, one
+                    lowercase letter, one number and one special character
+                  </span>
+                )}
+
+                {errors.confirmPassword?.type === 'validate' && (
+                  <span className='text-danger'>Passwords do not match</span>
+                )}
               </div>
               <button type='submit' className='btn btn-primary'>
                 Update Profile

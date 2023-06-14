@@ -15,6 +15,8 @@ const PublicLayout = () => {
         policyLink='/404'
         policyLinkText={'Read the privacy policy'}
         cookieSecurity={true}
+        onAccept={() => console.log('Cookies accepted')}
+        onReject={() => console.log('Cookies rejected')}
       />
       <Footer />
     </>

@@ -6,6 +6,7 @@ const Dropdown = ({ closeDropdown }) => {
   const dropdownRef = useRef(null)
 
   useEffect(() => {
+    // Close dropdown when user clicks outside of dropdown
     const handleClickOutside = e => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         closeDropdown()
