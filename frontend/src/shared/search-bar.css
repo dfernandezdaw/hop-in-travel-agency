@@ -51,13 +51,14 @@
 
 .form-slash {
   border-right: 2px solid #ddd;
+  margin-top: 1.5rem;
 }
 
 .search-icon svg {
   font-size: 1.5rem;
   padding: 0.5rem;
   background: var(--secondary-color);
-  color: #fff;
+  color: var(--button-text-color);
   border-radius: 10px 5px 10px 5px;
   cursor: pointer;
 }

@@ -16,5 +16,5 @@
 
 .pagination button.active {
   background-color: var(--secondary-color);
-  color: #ffffff;
+  color: var(--button-text-color);
 }

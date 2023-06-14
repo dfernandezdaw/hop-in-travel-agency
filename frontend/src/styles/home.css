@@ -31,7 +31,7 @@
 .section_title {
   display: flex;
   align-items: center;
-  color: #44bb80;
+  color: var(--primary-color);
 }
 
 [class*='hero_img_box-'] {

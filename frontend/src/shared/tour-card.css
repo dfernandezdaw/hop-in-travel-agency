@@ -45,7 +45,7 @@
   width: max-content;
   height: max-content;
   z-index: 10;
-  background-color: #55eda1;
+  background-color: var(--primary-color);
   color: #fff;
   padding: 0.3rem 0.5rem;
   border-radius: 3px 0 0 0;
@@ -133,7 +133,13 @@
 
 .booking-btn a {
   text-decoration: none;
-  color: white;
+  color: var(--button-text-color);
+}
+
+/* Cool hover effect */
+.booking-btn:hover {
+  transform: scale(1.05);
+  transition: 0.5s ease-in-out;
 }
 
 @media only screen and (max-width: 768px) {

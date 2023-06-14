@@ -17,10 +17,12 @@ h6 {
 }
 
 :root {
-  --primary-color: #44bb80;
-  --secondary-color: #55eda1;
+  --primary-color: #30845a;
+  --terciary-color: #cbf3f0;
+  --secondary-color: #ff9f1c;
+  --button-text-color: #292929;
   --heading-color: black;
-  --text-color: #777;
+  --text-color: #585858;
   --font-family: 'Open Sans', sans-serif;
   --font-family-heading: 'Domine', serif;
 }
@@ -49,34 +51,17 @@ section {
 .primary__btn a {
   font-size: 1.5rem;
   text-decoration: none;
-  color: #fff;
+  color: var(--button-text-color);
 }
 
 .primary__btn a:hover {
   color: inherit;
 }
 
-.secondary__btn {
-  background: transparent !important;
-  color: #0b2727 !important;
-  border: none !important;
-  font-weight: 500 !important;
-}
-
-.secondary__btn a {
-  text-decoration: none;
-  font-size: 1.5rem;
-  color: var(--heading-color);
-}
-
-.secondary__btn a:hover {
-  color: inherit;
-}
-
 .section_title {
   font-weight: 600;
   font-size: 1.7rem;
-  color: #55eda1;
+  color: var(--primary-color);
 }
 
 .spinner {
