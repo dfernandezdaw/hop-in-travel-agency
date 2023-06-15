@@ -10,6 +10,9 @@
 .login-img {
   width: 60%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-img img {
@@ -19,8 +22,10 @@
 
 .login-form {
   padding: 50px;
-  background: var(--secondary-color);
+  background: var(--primary-color);
   position: relative;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .login-container {
@@ -32,9 +37,12 @@
   width: 80px;
   height: 80px;
   position: absolute;
-  top: -30px;
+  top: -40px;
   left: 50%;
-  transform: translateX(-50%, -9%);
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-form .user img {
@@ -45,10 +53,6 @@
   text-align: center;
   margin-bottom: 2rem;
   color: #fff;
-}
-
-.login-form {
-  width: 60%;
 }
 
 .login-form input {
@@ -82,6 +86,15 @@
   background: var(--heading-color) !important;
   width: 100%;
   color: #fff !important;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  opacity: 0.8;
 }
 
 @media only screen and (max-width: 768px) {

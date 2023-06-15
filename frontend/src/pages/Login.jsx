@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
 import '../styles/login.css'
-import login from '../assets/login.png'
+import login from '../../public/logo3.png'
 import userIcon from '../assets/user.png'
 
 const Login = () => {

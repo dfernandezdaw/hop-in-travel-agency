@@ -46,7 +46,7 @@ const BookingForm = ({ tour, avgRating }) => {
 
       if (res.ok) {
         const data = await res.json()
-        console.log(data)
+        navigate('/bookings')
       } else {
         throw new Error('Failed to create booking')
       }
@@ -62,7 +62,6 @@ const BookingForm = ({ tour, avgRating }) => {
       ...prevBooking,
       bookingPrice: newTotalAmount,
     }))
-    console.log(newTotalAmount)
   }, [booking.guests, price, serviceFee])
 
   return (

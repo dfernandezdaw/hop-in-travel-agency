@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import '../styles/login.css'
 import { Link, useNavigate } from 'react-router-dom'
-import registerImg from '../assets/login.png'
+import registerImg from '../../public/logo3.png'
 import userIcon from '../assets/user.png'
 import { AuthContext } from '../context/AuthContext'
 

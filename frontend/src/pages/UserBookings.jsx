@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
+import { RaceBy } from '@uiball/loaders'
 import PageBanner from '../shared/PageBanner'
 import { AuthContext } from '../context/AuthContext'
 import '../styles/user-bookings.css'
@@ -10,6 +10,7 @@ const UserBookings = () => {
   const [bookings, setBookings] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(null)
+  const [loading, setLoading] = useState(true)
   const user = useContext(AuthContext)
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const UserBookings = () => {
         const { data, totalPages } = response.data
         setBookings(data)
         setTotalPages(totalPages)
+        setLoading(false)
       } catch (error) {
         console.error(error)
       }
@@ -69,6 +71,16 @@ const UserBookings = () => {
           <div className='row'>
             <div className='col-lg-12'>
               <div className='user-bookings'>
+                {loading && (
+                  <div className='spinner'>
+                    <RaceBy
+                      size={80}
+                      lineWeight={5}
+                      speed={1.4}
+                      color='black'
+                    />
+                  </div>
+                )}
                 <table className='bookings-table'>
                   <thead>
                     <tr>
