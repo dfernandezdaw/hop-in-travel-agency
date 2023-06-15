@@ -325,7 +325,7 @@ const TourData = () => {
                             rows='5'
                             ref={reviewRef}
                           ></textarea>
-                          <button type='submit' className='btn primary__btn'>
+                          <button type='submit' className='btn primary-btn'>
                             Submit
                           </button>
                         </div>

@@ -81,10 +81,10 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <button className='btn secondary__btn'>
+                    <button className='btn secondary-btn'>
                       <Link to='/login'>Login</Link>
                     </button>
-                    <button className='btn primary__btn'>
+                    <button className='btn primary-btn'>
                       <Link to='/register'>Register</Link>
                     </button>
                   </>
