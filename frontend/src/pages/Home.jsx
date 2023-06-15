@@ -19,11 +19,11 @@ const Home = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-lg-6'>
-              <div className='hero_content'>
-                <div className='hero_title'>
+              <div className='hero-content'>
+                <div className='hero-title'>
                   <SectionTitle sectionTitle='Discover Your Next Adventure With Us! 🌈' />
                 </div>
-                <p className='hero_text'>
+                <p className='hero-text'>
                   Embark on unforgettable journeys and create lasting memories
                   with Hop In!. Our expert team is dedicated to crafting unique
                   travel experiences tailored to your interests and preferences.
@@ -31,8 +31,8 @@ const Home = () => {
                   we ensure every trip is truly one-of-a-kind. Ready to explore
                   the world? Let's turn your travel dreams into reality!
                 </p>
-                <div className='button_container'>
-                  <Link to='/tours' className='btn primary__btn book-btn'>
+                <div className='button-container'>
+                  <Link to='/tours' className='btn primary-btn book-btn'>
                     Book Now
                   </Link>
                 </div>
@@ -40,21 +40,21 @@ const Home = () => {
             </div>
 
             <div className='col-lg-2'>
-              <div className='hero_img_box-1'>
-                <img src={hero1} alt='hero1' className='hero_img' />
+              <div className='hero-img-box-1'>
+                <img src={hero1} alt='hero1' className='hero-img' />
               </div>
             </div>
             <div className='col-lg-2'>
-              <div className='hero_img_box-2'>
-                <img src={hero2} alt='hero2' className='hero_img' />
+              <div className='hero-img-box-2'>
+                <img src={hero2} alt='hero2' className='hero-img' />
               </div>
             </div>
             <div className='col-lg-2'>
-              <div className='hero_img_box-3'>
+              <div className='hero-img-box-3'>
                 <video
                   src={hero_video}
                   alt='hero3'
-                  className='hero_img'
+                  className='hero-img'
                   autoPlay
                   loop
                   muted
