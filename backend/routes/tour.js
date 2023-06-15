@@ -12,28 +12,193 @@ const {
 
 const router = express.Router()
 
-// Route to search tour by city name, duration and group size get
+/**
+ * @swagger
+ * tags:
+ *   name: Tour
+ *   description: Tour management endpoints
+ */
+
+/**
+ * @swagger
+ * /api/v1/tours/search-main:
+ *   get:
+ *     summary: Search tours by city name, duration, and group size
+ *     tags: [Tour]
+ *     parameters:
+ *       - in: query
+ *         name: city
+ *         schema:
+ *           type: string
+ *         description: City name
+ *       - in: query
+ *         name: duration
+ *         schema:
+ *           type: integer
+ *         description: Tour duration (in days)
+ *       - in: query
+ *         name: groupSize
+ *         schema:
+ *           type: integer
+ *         description: Maximum group size
+ *     responses:
+ *       200:
+ *         description: Tours found
+ *       404:
+ *         description: Tours not found
+ */
 router.get('/search-main', searchToursByCityDurationAndGroupSize)
 
-// Route to search featured tours
+/**
+ * @swagger
+ * /api/v1/tours/featured:
+ *   get:
+ *     summary: Get featured tours
+ *     tags: [Tour]
+ *     responses:
+ *       200:
+ *         description: Tours found
+ *       404:
+ *         description: Tours not found
+ */
 router.get('/featured', searchFeaturedTours)
 
-// Route to get all tours
+/**
+ * @swagger
+ * /api/v1/tours:
+ *   get:
+ *     summary: Get all tours
+ *     tags: [Tour]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: Current page number
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *         description: Number of tours per page
+ *     responses:
+ *       200:
+ *         description: Tours found
+ *       400:
+ *         description: Bad request
+ */
 router.get('/', getTours)
 
-// Route to get single tour
+/**
+ * @swagger
+ * /api/v1/tours/{id}:
+ *   get:
+ *     summary: Get single tour
+ *     tags: [Tour]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: Tour ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Tour found
+ *       404:
+ *         description: Tour not found
+ */
 router.get('/:id', getTour)
 
-// Route to create tour
+/**
+ * @swagger
+ * /api/v1/tours:
+ *   post:
+ *     summary: Create tour
+ *     tags: [Tour]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/TourInput'
+ *     responses:
+ *       200:
+ *         description: Tour created successfully
+ *       400:
+ *         description: Failed to create tour
+ */
 router.post('/', createTour)
 
-// Route to update tour
+/**
+ * @swagger
+ * /api/v1/tours/{id}:
+ *   put:
+ *     summary: Update tour
+ *     tags: [Tour]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: Tour ID
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/TourInput'
+ *     responses:
+ *       200:
+ *         description: Tour updated successfully
+ *       400:
+ *         description: Failed to update tour
+ *       404:
+ *         description: Tour not found
+ */
 router.put('/:id', updateTour)
 
-// Route to delete tour
+/**
+ * @swagger
+ * /api/v1/tours/{id}:
+ *   delete:
+ *     summary: Delete tour
+ *     tags: [Tour]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: Tour ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Tour deleted successfully
+ *       400:
+ *         description: Failed to delete tour
+ *       404:
+ *         description: Tour not found
+ */
 router.delete('/:id', deleteTour)
 
-// Route to search tour by country name post
+/**
+ * @swagger
+ * /api/v1/tours/search:
+ *   post:
+ *     summary: Search tours by country name or city name
+ *     tags: [Tour]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/TourSearchInput'
+ *     responses:
+ *       200:
+ *         description: Tours found
+ *       404:
+ *         description: Tours not found
+ */
 router.post('/search', searchTours)
 
 module.exports = router

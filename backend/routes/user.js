@@ -46,19 +46,114 @@ const checkFileType = (file, cb) => {
   }
 }
 
-// Route to get all users
+/**
+ * @swagger
+ * tags:
+ *   name: User
+ *   description: User management endpoints
+ */
+
+/**
+ * @swagger
+ * /api/v1/users:
+ *   get:
+ *     summary: Get all users
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: Users found
+ *       400:
+ *         description: Bad request
+ */
 router.get('/', getUsers)
 
-// Route to get single user
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *   get:
+ *     summary: Get single user
+ *     tags: [User]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: User ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: User found
+ *       404:
+ *         description: User not found
+ */
 router.get('/:id', getUser)
 
-// Route to create user
+/**
+ * @swagger
+ * /api/v1/users:
+ *   post:
+ *     summary: Create user
+ *     tags: [User]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/UserInput'
+ *     responses:
+ *       200:
+ *         description: User created successfully
+ *       400:
+ *         description: Failed to create user
+ */
 router.post('/', createUser)
 
-// Route to update user
+/**
+ * @swagger
+ * /api/v1/users/update/{id}:
+ *   post:
+ *     summary: Update user
+ *     tags: [User]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: User ID
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             $ref: '#/definitions/UserUpdateInput'
+ *     responses:
+ *       200:
+ *         description: User updated successfully
+ *       400:
+ *         description: Failed to update user
+ */
 router.post('/update/:id', upload.single('profilePicture'), updateUser)
 
-// Route to delete user
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *   delete:
+ *     summary: Delete user
+ *     tags: [User]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: User ID
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: User deleted successfully
+ *       400:
+ *         description: Failed to delete user
+ */
 router.delete('/:id', deleteUser)
 
 module.exports = router

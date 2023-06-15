@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const swaggerjsdoc = require('swagger-jsdoc')
+const swaggerui = require('swagger-ui-express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const mongoose = require('mongoose')
@@ -54,6 +56,38 @@ app.use('/api/v1/auth', authRoutes)
 app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message || 'Internal Server Error' })
 })
+
+// Swagger options
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Hop In! Travel Agency API',
+      version: '1.0.0',
+      description: 'A REST API for a travel agency',
+    },
+    servers: [
+      {
+        url: process.env.BACKEND_URL,
+      },
+    ],
+  },
+  apis: ['./routes/*.js'],
+}
+
+// Swagger documentation
+const spec = swaggerjsdoc(options)
+const swaggerDocs = (app, port) => {
+  app.use('/api/v1/docs', swaggerui.serve, swaggerui.setup(spec))
+  app.get('/api/v1/docs.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json')
+    res.send(spec)
+  })
+
+  console.log(`Swagger UI available at http://localhost:${port}/api/v1/docs`)
+}
+
+swaggerDocs(app, port)
 
 app.listen(port, () => {
   connect()
