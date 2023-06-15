@@ -12,6 +12,7 @@ import VerifyEmail from '../pages/VerifyEmail'
 import Profile from '../pages/Profile'
 import NotFound from '../pages/NotFound'
 import UserBookings from '../pages/UserBookings'
+import Admin from '../pages/Admin'
 
 const Router = () => {
   const { user } = useContext(AuthContext)
@@ -30,6 +31,7 @@ const Router = () => {
         element={!user ? <Navigate to='/login' /> : <Profile />}
       />
       <Route path='/bookings' element={<UserBookings />} />
+      <Route path='/admin' element={<Admin />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   )
