@@ -3,15 +3,6 @@ const nodemailer = require('nodemailer')
 const dotenv = require('dotenv')
 dotenv.config()
 
-// Create a transporter for sending emails
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-})
-
 // Get all bookings
 const getBookings = async (req, res) => {
   try {
@@ -66,25 +57,20 @@ const createBooking = async (req, res) => {
   const newBooking = new Booking(req.body)
   try {
     const booking = await newBooking.save()
-
-    // Send email to user with booking details
-    const mailOptions = {
-      from: process.env.EMAIL,
-      to: booking.userId.email,
-      subject: 'Booking confirmation',
-      text: `Thank you for booking ${booking.tourId.name}. The total cost is ${booking.price}.`,
-    }
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error)
-      } else {
-        console.log(`Email sent: ${info.response}`)
-      }
-    })
-
     res.json({ message: 'Booking created succesfully', data: booking })
   } catch (error) {
     res.status(400).json({ message: 'Failed to create booking', error: error })
+  }
+}
+
+// Delete booking
+const deleteBooking = async (req, res) => {
+  const { id } = req.params
+  try {
+    const booking = await Booking.findByIdAndDelete(id)
+    res.json({ message: 'Booking deleted successfully' })
+  } catch (error) {
+    res.status(400).json({ message: 'Failed to delete booking', error: error })
   }
 }
 
@@ -123,4 +109,5 @@ module.exports = {
   createBooking,
   updateBooking,
   getUserBookings,
+  deleteBooking,
 }
