@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
 import '../styles/login.css'
 import { Link, useNavigate } from 'react-router-dom'
-import registerImg from '../../public/logo3.png'
 import userIcon from '../assets/user.png'
 import { AuthContext } from '../context/AuthContext'
 
@@ -52,7 +51,7 @@ const Register = () => {
           <div className='col-lg-8 center'>
             <div className='login-container'>
               <div className='login-img'>
-                <img src={registerImg} alt='' />
+                <img src='/logo3.png' alt='' />
               </div>
 
               <div className='login-form'>

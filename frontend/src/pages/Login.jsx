@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
 import '../styles/login.css'
-import login from '../../public/logo3.png'
 import userIcon from '../assets/user.png'
 
 const Login = () => {
@@ -95,7 +94,7 @@ const Login = () => {
           <div className='col-lg-8 center'>
             <div className='login-container'>
               <div className='login-img'>
-                <img src={login} alt='' />
+                <img src='/logo3.png' alt='' />
               </div>
               <div className='login-form'>
                 <div className='user'>
