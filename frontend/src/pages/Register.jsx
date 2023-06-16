@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import userIcon from '../assets/user.png'
 import { AuthContext } from '../context/AuthContext'
+import { toast, ToastContainer } from 'react-toastify'
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -41,18 +42,19 @@ const Register = () => {
       )
       const result = await res.json()
 
-      if (!res.ok) alert(result.message)
+      if (!res.ok) toast.error(result.message)
 
       dispatch({ type: 'REGISTER_SUCCESS' })
       navigate('/login')
     } catch (err) {
-      alert(err.message)
+      toast.error(err.message)
     }
   }
 
   return (
     <section>
       <div className='container'>
+        <ToastContainer />
         <div className='row'>
           <div className='col-lg-8 center'>
             <div className='login-container'>

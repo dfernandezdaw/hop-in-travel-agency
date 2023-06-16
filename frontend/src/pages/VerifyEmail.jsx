@@ -9,7 +9,6 @@ import '../styles/verifyemail.css'
 const VerifyEmail = () => {
   // Get token from URL
   const { token } = useParams()
-  console.log(token)
   const navigate = useNavigate()
   const [verificationStatus, setVerificationStatus] = useState(null)
 
