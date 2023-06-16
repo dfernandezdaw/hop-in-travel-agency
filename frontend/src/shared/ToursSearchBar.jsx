@@ -10,7 +10,6 @@ const ToursSearchBar = ({ onSearch }) => {
   // Function to handle the submit button
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(searchTerm.current.value)
 
     //Control the inputs
     if (searchTerm.current.value === '') {

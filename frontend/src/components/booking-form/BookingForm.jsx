@@ -25,7 +25,6 @@ const BookingForm = ({ tour, avgRating }) => {
 
   const handleChange = e => {
     const { id, value } = e.target
-    console.log(`Field ${id} has changed to ${value}`)
     setBooking(prevBooking => ({
       ...prevBooking,
       [id]: value,
@@ -33,7 +32,6 @@ const BookingForm = ({ tour, avgRating }) => {
   }
 
   const handleSubmit = async () => {
-    console.log(booking)
     try {
       const res = await fetch(`${import.meta.env.VITE_LOCAL_URL}/bookings`, {
         method: 'POST',
@@ -162,7 +160,6 @@ const BookingForm = ({ tour, avgRating }) => {
             }}
             onApprove={(data, actions) => {
               return actions.order.capture().then(function (details) {
-                console.log(details)
                 toast.success('Payment successful', {
                   position: 'top-center',
                   autoClose: 3000,

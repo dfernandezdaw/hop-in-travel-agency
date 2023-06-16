@@ -70,8 +70,6 @@ const TourData = () => {
 
     const review = reviewRef.current.value
 
-    console.log(review)
-
     try {
       if (!user || user === null || user === undefined) {
         toast.error('Please login to submit a review', {

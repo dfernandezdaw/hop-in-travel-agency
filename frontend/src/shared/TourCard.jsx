@@ -9,8 +9,6 @@ const TourCard = ({ tour }) => {
   const { _id, title, city, images, price, featured, reviews } = tour
   const [rating, setRating] = useState([])
 
-  //console.log(reviews)
-
   useEffect(() => {
     // Fetch the ratings for each review and store them in the rating state
     const fetchRatings = async () => {
