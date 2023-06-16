@@ -15,7 +15,7 @@ https://hop-in-travel-agency.vercel.app/home
 https://hop-in-travel-agency-production.up.railway.app/api/v1/docs/
 
 
-## Run Locally
+## Run frontend locally
 
 Clone the project
 
