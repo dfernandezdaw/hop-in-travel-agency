@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthContext'
+import { useForm } from 'react-hook-form'
 import '../styles/login.css'
 import userIcon from '../assets/user.png'
 
@@ -11,12 +12,17 @@ const Login = () => {
     password: '',
   })
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    trigger,
+  } = useForm()
+
   const { dispatch } = useContext(AuthContext)
   const navigate = useNavigate()
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-
+  const onSubmit = async () => {
     dispatch({ type: 'LOGIN_START' })
 
     try {
@@ -101,16 +107,25 @@ const Login = () => {
                 </div>
                 <h2>Login</h2>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className='form-group'>
                     <input
                       placeholder='Email'
+                      {...register('email', {
+                        required: 'Email is required',
+                        pattern: {
+                          value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
+                          message: 'Invalid email address',
+                        },
+                      })}
                       type='email'
                       name='email'
                       id='email'
                       onChange={handleChange}
-                      required
                     />
+                    {errors.email && (
+                      <span className='error'>{errors.email.message}</span>
+                    )}
                   </div>
                   <div className='form-group'>
                     <input
@@ -119,7 +134,6 @@ const Login = () => {
                       name='password'
                       id='password'
                       onChange={handleChange}
-                      required
                     />
                   </div>
                   <button className='btn btn-secondary auth-btn' type='submit'>
