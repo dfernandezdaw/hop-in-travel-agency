@@ -25,7 +25,7 @@ const Router = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/tours/search' element={<Search />} />
-      <Route path='/verify-email' element={<VerifyEmail />} />
+      <Route path='/verify-email/:token' element={<VerifyEmail />} />
       <Route
         path='/profile'
         element={!user ? <Navigate to='/login' /> : <Profile />}
