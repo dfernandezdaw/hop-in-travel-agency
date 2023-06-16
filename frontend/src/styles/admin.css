@@ -1,0 +1,172 @@
+.admin {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  flex-wrap: wrap; /* Add this */
+}
+
+.admin__users {
+  margin-bottom: 1.5rem;
+}
+
+.admin__users table,
+.admin__bookings table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin__users th,
+.admin__users td,
+.admin__bookings th,
+.admin__bookings td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.admin__users th:first-child,
+.admin__users td:first-child,
+.admin__bookings th:first-child,
+.admin__bookings td:first-child {
+  width: 25%;
+}
+
+.admin__users th:nth-child(2),
+.admin__users td:nth-child(2),
+.admin__bookings th:nth-child(2),
+.admin__bookings td:nth-child(2) {
+  width: 30%;
+}
+
+.admin__users th:nth-child(3),
+.admin__users td:nth-child(3),
+.admin__bookings th:nth-child(3),
+.admin__bookings td:nth-child(3) {
+  width: 15%;
+}
+
+.admin__users th:nth-child(4),
+.admin__users td:nth-child(4),
+.admin__bookings th:nth-child(4),
+.admin__bookings td:nth-child(4) {
+  width: 15%;
+}
+
+.admin__users th:last-child,
+.admin__users td:last-child,
+.admin__bookings th:last-child,
+.admin__bookings td:last-child {
+  width: 15%;
+  text-align: center;
+}
+
+.admin__users button,
+.admin__bookings button {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin__users button:hover,
+.admin__bookings button:hover {
+  background-color: #da190b;
+}
+
+.admin__create-tour {
+  margin-top: 1.5rem;
+}
+
+.admin__create-tour h2 {
+  margin-bottom: 1rem;
+}
+
+.admin__create-tour form {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.admin__create-tour label {
+  font-weight: bold;
+}
+
+.admin__create-tour input,
+.admin__create-tour textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.admin__create-tour input[type='checkbox'] {
+  display: inline-block;
+  width: auto;
+  margin-top: 0.5rem;
+}
+
+.admin__create-tour button[type='submit'] {
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin__create-tour button[type='submit']:hover {
+  background-color: var(--secondary-color);
+}
+
+.admin__create-tour div {
+  margin-bottom: 1rem;
+}
+
+#featured {
+  margin-left: 1rem;
+}
+
+/* Responsive Styles */
+
+@media only screen and (max-width: 768px) {
+  .admin {
+    flex-direction: column;
+  }
+
+  .admin__users table,
+  .admin__bookings table {
+    margin-top: 0;
+    font-size: 14px; /* Move the font-size rule to the media query */
+  }
+
+  .admin__users th:nth-child(2),
+  .admin__users td:nth-child(2),
+  .admin__bookings th:nth-child(2),
+  .admin__bookings td:nth-child(2) {
+    display: none;
+  }
+
+  .admin__users th:nth-child(3),
+  .admin__users td:nth-child(3),
+  .admin__bookings th:nth-child(3),
+  .admin__bookings td:nth-child(3) {
+    width: 25%;
+  }
+
+  .admin__users th:nth-child(4),
+  .admin__users td:nth-child(4),
+  .admin__bookings th:nth-child(4),
+  .admin__bookings td:nth-child(4) {
+    width: 25%;
+  }
+
+  .admin__users th:last-child,
+  .admin__users td:last-child,
+  .admin__bookings th:last-child,
+  .admin__bookings td:last-child {
+    width: 25%;
+    text-align: left;
+  }
+}
