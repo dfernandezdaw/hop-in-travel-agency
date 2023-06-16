@@ -30,14 +30,23 @@ const getTour = async (req, res) => {
   }
 }
 
-// Create tour
+// Create tour with file upload
 const createTour = async (req, res) => {
   const newTour = new Tour(req.body)
   try {
+    if (req.files && req.files.length > 0) {
+      req.files.forEach(file => {
+        newTour.images.push(
+          `https://hop-in-travel-agency-production.up.railway.app/uploads/${file.filename}`
+        )
+      })
+    }
     const tour = await newTour.save()
-    res.json({ message: 'Tour created succesfully', data: tour })
+    res.json({ message: 'Tour created successfully', data: tour })
   } catch (error) {
-    res.status(400).json({ message: 'Failed to create tour', error: error })
+    res
+      .status(400)
+      .json({ message: 'Failed to create tour', error: error.message })
   }
 }
 
