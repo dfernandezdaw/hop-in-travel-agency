@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -8,9 +8,7 @@ import '../styles/verifyemail.css'
 
 const VerifyEmail = () => {
   // Get token from URL
-  const location = useLocation()
-  const searchParams = new URLSearchParams(location.search)
-  const token = searchParams.get('token')
+  const { token } = useParams()
   console.log(token)
   const navigate = useNavigate()
   const [verificationStatus, setVerificationStatus] = useState(null)
