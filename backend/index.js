@@ -18,7 +18,7 @@ const port = process.env.PORT || 5000
 
 app.use(
   cors({
-    origin: 'https://hop-in-travel-agency.vercel.app/',
+    origin: 'https://hop-in-travel-agency.vercel.app',
     credentials: true,
   })
 )
