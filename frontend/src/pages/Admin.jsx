@@ -83,7 +83,13 @@ const Admin = () => {
 
   const handleDeleteUser = async userId => {
     try {
-      await axios.delete(`${import.meta.env.VITE_LOCAL_URL}/users/${userId}`)
+      await axios.delete(`${import.meta.env.VITE_LOCAL_URL}/users/${userId}`),
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+
       toast.success('User deleted successfully.', {
         position: 'top-center',
         autoClose: 3000,
@@ -101,7 +107,12 @@ const Admin = () => {
   const handleDeleteBooking = async bookingId => {
     try {
       await axios.delete(
-        `${import.meta.env.VITE_LOCAL_URL}/bookings/${bookingId}`
+        `${import.meta.env.VITE_LOCAL_URL}/bookings/${bookingId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
       )
       toast.success('Booking deleted successfully.', {
         position: 'top-center',
@@ -164,6 +175,7 @@ const Admin = () => {
         {
           headers: {
             'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${user.token}`,
           },
         }
       )
