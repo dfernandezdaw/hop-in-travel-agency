@@ -89,7 +89,9 @@ const swaggerDocs = (app, port) => {
     res.send(spec)
   })
 
-  console.log(`Swagger UI available at http://localhost:${port}/api/v1/docs`)
+  console.log(
+    `Swagger UI available at https://hop-in-travel-agency-production.up.railway.app/api/v1/docs`
+  )
 }
 
 swaggerDocs(app, port)

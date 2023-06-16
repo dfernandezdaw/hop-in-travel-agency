@@ -61,8 +61,8 @@ const Header = () => {
                       <img
                         src={
                           user.profilePicture
-                            ? `http://localhost:3000/uploads/${user.profilePicture}`
-                            : 'http://localhost:3000/uploads/default-avatar.png'
+                            ? `https://hop-in-travel-agency-production.up.railway.app/uploads/${user.profilePicture}`
+                            : '/assets/default-avatar.png'
                         }
                         alt='Profile Picture'
                         className='nav-profile-picture'

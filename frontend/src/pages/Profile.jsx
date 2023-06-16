@@ -87,8 +87,8 @@ const Profile = () => {
                   <img
                     src={
                       (user &&
-                        `http://localhost:3000/uploads/${profilePicture}`) ||
-                      'http://localhost:3000/uploads/default-avatar.png'
+                        `https://hop-in-travel-agency-production.up.railway.app/uploads/${profilePicture}`) ||
+                      '/assets/default-avatar.png'
                     }
                     alt=''
                   />

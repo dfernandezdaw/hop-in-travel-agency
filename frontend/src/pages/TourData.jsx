@@ -339,8 +339,8 @@ const TourData = () => {
                         <img
                           src={
                             review.userId
-                              ? `http://localhost:3000/uploads/${review.userId.profilePicture}`
-                              : 'http://localhost:3000/uploads/default-avatar.png'
+                              ? `https://hop-in-travel-agency-production.up.railway.app/uploads/${review.userId.profilePicture}`
+                              : '/assets/default-avatar.png'
                           }
                           alt='userAvatar'
                         />
