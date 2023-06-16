@@ -59,7 +59,9 @@ const createBooking = async (req, res) => {
     const booking = await newBooking.save()
     res.json({ message: 'Booking created succesfully', data: booking })
   } catch (error) {
-    res.status(400).json({ message: 'Failed to create booking', error: error })
+    res
+      .status(400)
+      .json({ message: 'Failed to create booking', error: error.message })
   }
 }
 
