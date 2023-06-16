@@ -92,7 +92,7 @@ const register = async (req, res) => {
         from: process.env.EMAIL,
         to: savedUser.email,
         subject: 'Email verification',
-        html: `<h1>Welcome to Hop In!</h1><p>Click on the link below to verify your email</p><br><a href=${process.env.CLIENT_URL}/verify-email?token=${token.token}>Verify email</a>`,
+        html: `<h1>Welcome to Hop In!</h1><p>Click on the link below to verify your email</p><br><a href=${process.env.CLIENT_URL}/verify-email/${token.token}>Verify email</a>`,
       }
 
       // Send the email. If email sending fails, delete the user record and return an error response
