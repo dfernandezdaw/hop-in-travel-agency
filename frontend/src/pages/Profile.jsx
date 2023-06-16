@@ -60,7 +60,7 @@ const Profile = () => {
         }
       )
       toast.success('Profile updated successfully')
-      dispatch({ type: 'UPDATE_USER', payload: response.data.user })
+      dispatch({ type: 'LOGIN_SUCCESS', payload: response.data.user })
     } catch (error) {
       console.error(error)
     }
