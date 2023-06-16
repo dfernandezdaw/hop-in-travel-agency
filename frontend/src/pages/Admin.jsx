@@ -34,7 +34,12 @@ const Admin = () => {
       if (!user.user) return
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_LOCAL_URL}/users/${user.user.id}`
+          `${import.meta.env.VITE_LOCAL_URL}/users/${user.user.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
         )
         const data = await response.json()
         if (data.data.role !== 'admin') {

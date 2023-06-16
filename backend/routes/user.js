@@ -8,6 +8,7 @@ const {
 } = require('../controllers/user')
 
 const router = express.Router()
+const protectedRoute = require('../middlewares/protectedRoute')
 
 const multer = require('multer')
 const path = require('path')

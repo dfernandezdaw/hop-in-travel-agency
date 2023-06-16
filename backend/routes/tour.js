@@ -14,6 +14,7 @@ const router = express.Router()
 
 const multer = require('multer')
 const path = require('path')
+const protectedRoute = require('../middlewares/protectedRoute')
 
 // Set storage engine
 const storage = multer.diskStorage({
@@ -216,7 +217,7 @@ router.put('/:id', updateTour)
  *       404:
  *         description: Tour not found
  */
-router.delete('/:id', deleteTour)
+router.delete('/:id', protectedRoute, deleteTour)
 
 /**
  * @swagger
