@@ -338,7 +338,7 @@ const TourData = () => {
                           src={
                             review.userId
                               ? `https://hop-in-travel-agency-production.up.railway.app/uploads/${review.userId.profilePicture}`
-                              : '/assets/default-avatar.png'
+                              : '/default-avatar.png'
                           }
                           alt='userAvatar'
                         />

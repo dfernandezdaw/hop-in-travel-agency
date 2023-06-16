@@ -62,7 +62,7 @@ const Header = () => {
                         src={
                           user.profilePicture
                             ? `https://hop-in-travel-agency-production.up.railway.app/uploads/${user.profilePicture}`
-                            : '/assets/default-avatar.png'
+                            : '/default-avatar.png'
                         }
                         alt='Profile Picture'
                         className='nav-profile-picture'

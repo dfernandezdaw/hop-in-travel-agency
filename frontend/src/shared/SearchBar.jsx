@@ -87,6 +87,7 @@ const SearchBar = () => {
               <h6>Duration</h6>
               <input
                 type='number'
+                min='1'
                 placeholder='Duration days'
                 ref={durationRef}
               />
@@ -98,7 +99,7 @@ const SearchBar = () => {
             </span>
             <div>
               <h6>Max People</h6>
-              <input type='number' placeholder='0' ref={maxPeopleRef} />
+              <input type='number' min='1' placeholder='0' ref={maxPeopleRef} />
             </div>
           </div>
 

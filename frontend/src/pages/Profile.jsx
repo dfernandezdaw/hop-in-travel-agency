@@ -88,7 +88,7 @@ const Profile = () => {
                     src={
                       (user &&
                         `https://hop-in-travel-agency-production.up.railway.app/uploads/${profilePicture}`) ||
-                      '/assets/default-avatar.png'
+                      '/default-avatar.png'
                     }
                     alt=''
                   />
