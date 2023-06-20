@@ -34,42 +34,44 @@ const TourCard = ({ tour }) => {
   isNaN(avgRating) && (avgRating = 0)
 
   return (
-    <div className='tour-card'>
-      <div className='card'>
-        <div className='tour-img'>
-          <img src={images[0]} alt='Image of the tour' />
-          {featured && <span>Featured</span>}
-        </div>
-
-        <div className='card-body'>
-          <div className='card-top'>
-            <span className='tour-location'>
-              <FontAwesomeIcon icon={faLocationDot} /> {city}
-            </span>
-            <span className='tour-rating'>
-              <FontAwesomeIcon icon={faStar} />{' '}
-              {avgRating === 0 ? null : avgRating.toFixed(2)}{' '}
-              {rating.length === 0 ? (
-                'Not rated'
-              ) : (
-                <span>({reviews.length})</span>
-              )}
-            </span>
+    <Link to={`/tours/${_id}`}>
+      <div className='tour-card'>
+        <div className='card'>
+          <div className='tour-img'>
+            <img src={images[0]} alt='Image of the tour' />
+            {featured && <span>Featured</span>}
           </div>
-          <h5 className='tour-title'>
-            <Link to={`/tours/${_id}`}>{title}</Link>
-          </h5>
-          <div className='card-bottom'>
-            <h5>
-              {price}$ <span> /per person</span>
+
+          <div className='card-body'>
+            <div className='card-top'>
+              <span className='tour-location'>
+                <FontAwesomeIcon icon={faLocationDot} /> {city}
+              </span>
+              <span className='tour-rating'>
+                <FontAwesomeIcon icon={faStar} />{' '}
+                {avgRating === 0 ? null : avgRating.toFixed(2)}{' '}
+                {rating.length === 0 ? (
+                  'Not rated'
+                ) : (
+                  <span>({reviews.length})</span>
+                )}
+              </span>
+            </div>
+            <h5 className='tour-title'>
+              <Link to={`/tours/${_id}`}>{title}</Link>
             </h5>
-            <button className='booking-btn'>
-              <Link to={`/tours/${_id}`}>Book Now</Link>
-            </button>
+            <div className='card-bottom'>
+              <h5>
+                {price}$ <span> /per person</span>
+              </h5>
+              <button className='booking-btn'>
+                <Link to={`/tours/${_id}`}>Book Now</Link>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
